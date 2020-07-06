@@ -1,0 +1,51 @@
+.notifications {
+  position: fixed;
+}
+
+/* Positioning */ 
+.notifications.top-right {
+  right: 10px;
+  top: 25px;
+}
+
+.notifications.top-left {
+  left: 10px;
+  top: 25px;
+}
+
+.notifications.bottom-left {
+  left: 10px;
+  bottom: 25px;
+}
+
+.notifications.bottom-right {
+  right: 10px;
+  bottom: 25px;
+}
+
+/* Notification Element */
+.notifications > div {
+  position: relative;
+  z-index: 9999;
+  margin: 5px 0px;
+}
+.alert{
+    border:none;
+    height:80px;
+    width:355px;
+}
+.alert-info { 
+	border-left:3px solid rgb(64, 17, 216);
+    background:rgba(41, 122, 204, 1); 
+    color:white;
+}
+.alert-success { 
+	border-left:3px solid rgb(2, 107, 52);
+    background:rgba(53, 192, 115, 1); 
+    color:white;
+}
+.alert-danger { 
+	border-left:3px solid rgb(216, 17, 51);
+    background:rgba(237, 96, 93, 1); 
+    color:white;
+}

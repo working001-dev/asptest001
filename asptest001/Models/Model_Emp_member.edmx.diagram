@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="387a39831ea44b20b14e6b6f840bb9fb" Name="Diagram1">
+        <EntityTypeShape EntityType="dbtestModel.Employee_member" Width="2.625" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbtestModel.Seal_order" Width="1.5" PointX="4.375" PointY="0.75" />
+        <EntityTypeShape EntityType="dbtestModel.TD_Tempolary_Factory" Width="1.5" PointX="8.125" PointY="4.25" />
+        <EntityTypeShape EntityType="dbtestModel.TM_Factory" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="dbtestModel.TM_Countrys" Width="1.5" PointX="8.125" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

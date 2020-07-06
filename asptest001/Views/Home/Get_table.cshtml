@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Get_table";
+}
+
+@*<h2>Get_table</h2>*@
+
+<table class="table table-striped nowrap table-bordered" style="width:100%" id="example" >
+    <thead>
+        <tr>
+            <th>Country</th>
+            <th>Item_Type</th>
+            <th>Order_Date</th>
+            <th>Order_ID</th>
+            <th>Order_Priority</th>
+            <th>Region</th>
+            <th>Sales_Channel</th>
+            <th>Ship_Date</th>
+            <th>Total_Cost</th>
+            <th>Total_Profit</th>
+            <th>Total_Revenue</th>
+            <th>Unit_Cost</th>
+            <th>Unit_Price</th>
+            <th>Units_Sold</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var intem in ViewBag.dtable)
+        {
+            <tr>
+                <td>@intem.Country</td>
+                <td>@intem.Item_Type</td>
+                <td>@intem.Order_Date</td>
+                <td>@intem.Order_ID</td>
+                <td>@intem.Order_Priority</td>
+                <td>@intem.Region</td>
+                <td>@intem.Sales_Channel</td>
+                <td>@intem.Ship_Date</td>
+                <td>@intem.Total_Cost</td>
+                <td>@intem.Total_Profit</td>
+                <td>@intem.Total_Revenue</td>
+                <td>@intem.Unit_Cost</td>
+                <td>@intem.Unit_Price</td>
+                <td>@intem.Units_Sold</td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,270 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+@section links{  
+ 
+    <link href="~/Content/css/select2.css" rel="stylesheet" />
+    @*<link href="~/Content/select2-bootstrap.css" rel="stylesheet" />*@
+
+
+
+    <style > 
+        #html5Form .form-control-feedback {
+            position: absolute;
+            right: -15px;
+            top: 0px;
+        }
+        .select2-container input {
+            /*width:100% !important;*/
+            max-width:100%;
+        } 
+        .select2-container .select2-selection--single { 
+            height: 34px; 
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered { 
+            line-height: 34px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 32px; 
+        }
+
+        .color-data{
+            display:block;
+            float:right;
+            width:100px;
+            height:21px;
+            border-radius:4px; 
+            border: 1px solid #908888;
+            box-shadow: 1px 1px 4px #908888;
+        }
+        .label-select{ 
+            display: block;
+            background: #5c5851;
+            color: white;
+            width: 45px;
+            height: 18px;
+            margin: 0px 10px 0px 0;
+            font-size: 11px;
+            padding: 2px 9px;
+            border-radius: 5px;
+            border: 1px solid #5c5851;
+            box-shadow: 1px 1px 4px #908888;
+            float: left;
+            text-align: center;
+        }
+        .label-selected{
+            margin-top: 7px;
+            margin-bottom: 6px;
+            height: 18px;
+            padding: 0px 5px;
+            line-height: 19px;
+        }
+</style>
+
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+<form id="html5Form" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Full name</label>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="firstName" placeholder="First name" />
+        </div>
+        <div class="col-sm-3">
+            <input type="text" class="form-control" name="lastName" placeholder="Last name"  />
+        </div>
+    </div> 
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Factory</label>
+        <div class="col-sm-6">
+            <select name="colors" class="form-control select2-select"> 
+                <option value="">Please select</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Country</label>
+        <div class="col-sm-6">
+            <select name="countrys" class="form-control select2-select">
+                <option value="">Please select</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+            <button type="submit" class="btn btn-default">Validate</button>
+            <button type="button" class="btn btn-default" id="resetButton">Reset</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Fav color</label>
+        <div class="col-sm-3">
+            <button type="submit" class="btn btn-danger">Submit</button> 
+        </div>
+    </div>  
+</form>
+
+
+
+@section scripts { 
+   <script src="~/Scripts/bootstrapValidator.js"></script> 
+   <script src="~/Scripts/select2.js"></script>
+   <script>
+       $(document).ready(function () {
+           $('#html5Form')
+                .find('[name="colors"]')
+                .change(function (e) {
+                    // revalidate the color when it is changed countrys
+                    $('#html5Form').bootstrapValidator('revalidateField', 'colors');
+                })
+                .end()
+                .find('[name="countrys"]')
+                .change(function (e) {
+                    // revalidate the color when it is changed countrys
+                    $('#html5Form').bootstrapValidator('revalidateField', 'countrys');
+                })
+                .end()
+                .bootstrapValidator({
+                    container: 'tooltip',
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        firstName: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The first name is required and can not be empty'
+                                }
+                            }
+                        },
+                        lastName: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The last name is required and can not be empty'
+                                }
+                            }
+                        },
+                        colors: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Please choose factory',
+                                    //callback: function (value, validator) {
+                                    //    // Get the selected options
+                                    //    var options = validator.getFieldElements('colors').val();
+                                    //    return (options != null && options.length >= 2 && options.length <= 4);
+                                    //}
+                                }
+                            }
+                        },
+                        countrys: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Please choose 1 country'
+                                },
+                                callback: function (value, validator) {
+                                    // Get the selected options
+                                    var options = validator.getFieldElements('countrys').val();
+                                    return (options != "" );
+                                }
+                              }
+                            } 
+                    }
+                })
+                .on('error.field.bv', function(e, data) {
+                    // Get the tooltip
+                    var $parent = data.element.parents('.form-group'),
+                        $icon   = $parent.find('.form-control-feedback[data-bv-icon-for="' + data.field + '"]'),
+                        title   = $icon.data('bs.tooltip').getTitle();
+
+                    // Destroy the old tooltip and create a new one positioned to the right
+                    $icon.tooltip('destroy').tooltip({
+                        html: true,
+                        placement: 'right',
+                        title: title,
+                        container: 'body'
+                    });
+                });
+
+            // Reset the Tooltip container form
+            $('#resetButton').on('click', function(e) {
+                var fields = $('#html5Form').data('bootstrapValidator').getOptions().fields,
+                    $parent, $icon;
+                $("select[name=\"colors\"]").val("").trigger("change");
+                $("select[name=\"countrys\"]").val("").trigger("change");
+                for (var field in fields) {
+                    $parent = $('[name="' + field + '"]').parents('.form-group');
+                    $icon   = $parent.find('.form-control-feedback[data-bv-icon-for="' + field + '"]');
+                    $icon.tooltip('destroy');
+                }
+
+                // Then reset the form
+                $('#html5Form').data('bootstrapValidator').resetForm(true);
+            });
+
+
+            set_select_factory();
+            set_select_country();
+       });
+
+       function set_select_factory() {
+           var selt = $('select[name="colors"]').select2({ placeholder: 'Select an option', templateResult: formatFactiry, width: "100%" })
+           var url = "@Url.Action("Get_factory", "Customers", null, "http")";
+           $.post(url, function(data, status){
+               for (var item in data.data) { 
+                   selt.append(new Option( data.data[item]["name"] + "</" + data.data[item]["id"] + "/>", data.data[item]["id"], false, false));
+               }
+             });
+       }
+       function set_select_country() {
+           var sect = $('select[name="countrys"]').select2({ placeholder: 'Select an option', templateResult: formatState , width:"100%"})
+           var url = "@Url.Action("Get_countrys", "Customers", null, "http")";
+           $.post(url, function (data, status) {
+               var dt = data.data;
+               for (var i in dt) {
+                   var c = " <span class='color-data' style='background:" + dt[i]["colors"] + ";' ></span>";
+                   var t = dt[i]["name"] + " <" + dt[i]["colors"] + " >";
+                   sect.append(new Option(t, dt[i]["id"], false, false));
+                   $("ul .select2-results__option:nth-child(" + i + ")").append(c);
+               }
+           });
+       }
+       function formatFactiry(state){
+           if (!state.id) {
+               return state.text;
+           } 
+           return $(
+             '<span><label class="label-select" style="width:120px;">' + state.id + '</label>' + state.text + '</span>'
+           ); 
+       }
+       function formatState(state) {
+           if (!state.id) {
+               return state.text;
+           }
+           var cor_st = state.text.indexOf("<")+1;
+           var cor_en = state.text.indexOf(">");
+           var color = state.text.substring(cor_st, cor_en).replace(/\s/g, '');
+           //$("#"+state._resultId).append("$('#'+state._resultId).append(<span class='color-data' style='background:red;' ></span>);");
+           var $state = $(
+             '<span><label class="label-select">' + state.id + '</label>' + state.text + '</span>' + "<span class='color-data' style='background:" + color + ";' ></span>"
+           );
+           return $state;
+       };
+
+       $('select[name="colors"]').on('select2:select', function (e) {
+           var data = e.params.data; 
+           $("span[title='" + data.text + "'").html('<span style="font-weight: bold;"><label class="label-select label-selected" style="width:120px;">' + data.id + '</label>' + data.text + '</span>');
+       });
+       $('select[name="countrys"]').on('select2:select', function (e) {
+           var data = e.params.data;
+           var cor_st = data.text.indexOf("<") + 1;
+           var cor_en = data.text.indexOf(">");
+           var color = data.text.substring(cor_st, cor_en).replace(/\s/g, '');
+           $("span[title='" + data.text + "'").html('<span style="font-weight: bold;"><label class="label-select label-selected">' + data.id + '</label>' + data.text + '</span>' + "<span class='color-data' style='background:" + color + "; margin-top:5px;' ></span>");
+       });
+   </script>
+}

@@ -1,0 +1,103 @@
+﻿html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: linear-gradient(90deg, #0053b826, #0053b826,#67bf93);
+    background: -ms-linear-gradient(left, #efefef, #67bf93);
+    /*-webkit-background-image: -ms-linear-gradient(90deg, #0053b826, #0053b826,#67bf93);*/
+    /*min-height:100%;*/
+    height: auto;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 35px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-header, .navbar-head {
+    margin-top: 15px;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    height: 80px;
+    -webkit-transition: background 0s, height 0.5s, box-shadow 0.5s; /* Safari */
+    transition: background 0s, height 0.5s, box-shadow 0.5s;
+    /* border-color: #080808; */
+}
+
+.navbar-header a, .navbar-nav a, .nav-logout {
+    -webkit-transition: color 1s; /* Safari */
+    transition: color 1s;
+}
+
+.nav-login li {
+    margin: 8px;
+}
+
+.nav-logout {
+    color: black;
+    font-size: 18px;
+    padding: 15px 15px;
+    line-height: 20px;
+}
+
+.btn-logout {
+    margin-top: -25px;
+    margin-left: 15px;
+    border-radius: 70px;
+    height: 70px;
+    background: rgba(79, 206, 161, 0.63);
+    transition: box-shadow 0.5s linear;
+}
+
+    .btn-logout:hover, .btn-logout:focus {
+        border: none !important;
+        outline: none;
+        box-shadow: 2px 0px 5px rgba(0, 1, 29, 0.63);
+    }
+
+.navbar:hover {
+    /*background: linear-gradient(to right, rgba(0, 0, 255, 0.6), rgba(14, 15, 227, 0.60));*/
+    background: #428bca; /*-90deg,*/
+    box-shadow: 0px 5px 10px rgba(0, 1, 29, 0.63);
+}
+
+.navbar-scroll {
+    /*background: linear-gradient(to right, rgba(0, 0, 255, 0.6), rgba(14, 15, 227, 0.60));*/
+    background: #428bca; /*-90deg,*/
+    box-shadow: 0px 5px 10px rgba(0, 1, 29, 0.63);
+}
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
+    color: black;
+}
+
+.navbar:hover a, .navbar:hover li > a, .navbar:hover .nav-logout {
+    color: white;
+}
+
+.root {
+    /*overflow-x: auto;*/
+}

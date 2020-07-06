@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbtestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee_member">
+          <Key>
+            <PropertyRef Name="Emp_inx" />
+          </Key>
+          <Property Name="Emp_inx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Emp_efname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Emp_elname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Emp_tfname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Emp_tlname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Emp_position" Type="nchar" MaxLength="10" />
+          <Property Name="Emp_birth_date" Type="datetime" />
+          <Property Name="Emp_start_date" Type="datetime" />
+          <Property Name="Emp_stop_date" Type="datetime" />
+          <Property Name="Emp_updated_date" Type="datetime" />
+          <Property Name="Emp_created_date" Type="datetime" />
+          <Property Name="Emp_created_by" Type="nchar" MaxLength="10" />
+          <Property Name="Emp_updated_by" Type="nchar" MaxLength="10" />
+          <Property Name="Emp_status" Type="nchar" MaxLength="10" />
+          <Property Name="Emp_username" Type="nchar" MaxLength="100" />
+          <Property Name="Emp_password" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Seal_order">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Region" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="Item_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sales_Channel" Type="nvarchar" MaxLength="100" />
+          <Property Name="Order_Priority" Type="nvarchar" MaxLength="100" />
+          <Property Name="Order_Date" Type="nvarchar" MaxLength="10" />
+          <Property Name="Order_ID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ship_Date" Type="nvarchar" MaxLength="10" />
+          <Property Name="Units_Sold" Type="float" />
+          <Property Name="Unit_Price" Type="float" />
+          <Property Name="Unit_Cost" Type="float" />
+          <Property Name="Total_Revenue" Type="float" />
+          <Property Name="Total_Cost" Type="float" />
+          <Property Name="Total_Profit" Type="float" />
+        </EntityType>
+        <EntityType Name="TD_Tempolary_Factory">
+          <Key>
+            <PropertyRef Name="temp_id" />
+          </Key>
+          <Property Name="temp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="temp_code" Type="nvarchar" MaxLength="20" />
+          <Property Name="temp_name" Type="nvarchar" MaxLength="250" />
+          <Property Name="created_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TM_Countrys">
+          <Key>
+            <PropertyRef Name="inx" />
+          </Key>
+          <Property Name="inx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nation_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="country_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="nation_name_th" Type="nvarchar" MaxLength="255" />
+          <Property Name="nation_name_en" Type="nvarchar" MaxLength="255" />
+          <Property Name="country_name_th" Type="nvarchar" MaxLength="255" />
+          <Property Name="country_name_en" Type="nvarchar" MaxLength="255" />
+          <Property Name="area_one" Type="nvarchar" MaxLength="255" />
+          <Property Name="area_two" Type="nvarchar" MaxLength="255" />
+          <Property Name="area_percent" Type="nvarchar" MaxLength="255" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="255" />
+          <Property Name="color_tag" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TM_Factory">
+          <Key>
+            <PropertyRef Name="fact_id" />
+          </Key>
+          <Property Name="fact_id" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="fact_name" Type="nvarchar" MaxLength="250" />
+          <Property Name="fact_owner" Type="nvarchar" MaxLength="250" />
+          <Property Name="fact_use" Type="nvarchar" MaxLength="250" />
+          <Property Name="addess" Type="nvarchar" MaxLength="100" />
+          <Property Name="m" Type="nvarchar" MaxLength="100" />
+          <Property Name="s" Type="nvarchar" MaxLength="100" />
+          <Property Name="t" Type="nvarchar" MaxLength="100" />
+          <Property Name="b" Type="nvarchar" MaxLength="100" />
+          <Property Name="provinc" Type="nvarchar" MaxLength="100" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" />
+          <Property Name="zib" Type="nvarchar" MaxLength="10" />
+          <Property Name="phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="typ" Type="nvarchar" MaxLength="20" />
+          <Property Name="money" Type="nvarchar" MaxLength="20" />
+          <Property Name="mand" Type="nvarchar" MaxLength="20" />
+          <Property Name="power" Type="nvarchar" MaxLength="20" />
+          <Property Name="TSIC" Type="nvarchar" MaxLength="20" />
+          <Property Name="old_num" Type="nvarchar" MaxLength="120" />
+          <Property Name="create_date" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="dbtestModelStoreContainer">
+          <EntitySet Name="Employee_member" EntityType="Self.Employee_member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seal_order" EntityType="Self.Seal_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_Tempolary_Factory" EntityType="Self.TD_Tempolary_Factory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TM_Countrys" EntityType="Self.TM_Countrys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TM_Factory" EntityType="Self.TM_Factory" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbtestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee_member">
+          <Key>
+            <PropertyRef Name="Emp_inx" />
+          </Key>
+          <Property Name="Emp_inx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Emp_efname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_elname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_tfname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_tlname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_position" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_birth_date" Type="DateTime" Precision="3" />
+          <Property Name="Emp_start_date" Type="DateTime" Precision="3" />
+          <Property Name="Emp_stop_date" Type="DateTime" Precision="3" />
+          <Property Name="Emp_updated_date" Type="DateTime" Precision="3" />
+          <Property Name="Emp_created_date" Type="DateTime" Precision="3" />
+          <Property Name="Emp_created_by" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_updated_by" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_username" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="dbtestEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employee_member" EntityType="Self.Employee_member" />
+          <EntitySet Name="Seal_order" EntityType="dbtestModel.Seal_order" />
+          <EntitySet Name="TD_Tempolary_Factory" EntityType="dbtestModel.TD_Tempolary_Factory" />
+          <EntitySet Name="TM_Factory" EntityType="dbtestModel.TM_Factory" />
+          <EntitySet Name="TM_Countrys" EntityType="dbtestModel.TM_Countrys" />
+        </EntityContainer>
+        <EntityType Name="Seal_order">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Region" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Item_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sales_Channel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Order_Priority" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Order_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Order_ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Ship_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Units_Sold" Type="Double" />
+          <Property Name="Unit_Price" Type="Double" />
+          <Property Name="Unit_Cost" Type="Double" />
+          <Property Name="Total_Revenue" Type="Double" />
+          <Property Name="Total_Cost" Type="Double" />
+          <Property Name="Total_Profit" Type="Double" />
+        </EntityType>
+        <EntityType Name="TD_Tempolary_Factory">
+          <Key>
+            <PropertyRef Name="temp_id" />
+          </Key>
+          <Property Name="temp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="temp_name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+          <Property Name="temp_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TM_Factory">
+          <Key>
+            <PropertyRef Name="fact_id" />
+          </Key>
+          <Property Name="fact_id" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="fact_name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="fact_owner" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="fact_use" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="addess" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="m" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="s" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="t" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="b" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="provinc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="zib" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="typ" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="money" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mand" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="power" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TSIC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="old_num" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TM_Countrys">
+          <Key>
+            <PropertyRef Name="inx" />
+          </Key>
+          <Property Name="inx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nation_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="country_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nation_name_th" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nation_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="country_name_th" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="country_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="area_one" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="area_two" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="area_percent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="color_tag" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbtestModelStoreContainer" CdmEntityContainer="dbtestEntities">
+          <EntitySetMapping Name="Employee_member">
+            <EntityTypeMapping TypeName="dbtestModel.Employee_member">
+              <MappingFragment StoreEntitySet="Employee_member">
+                <ScalarProperty Name="Emp_inx" ColumnName="Emp_inx" />
+                <ScalarProperty Name="Emp_code" ColumnName="Emp_code" />
+                <ScalarProperty Name="Emp_efname" ColumnName="Emp_efname" />
+                <ScalarProperty Name="Emp_elname" ColumnName="Emp_elname" />
+                <ScalarProperty Name="Emp_tfname" ColumnName="Emp_tfname" />
+                <ScalarProperty Name="Emp_tlname" ColumnName="Emp_tlname" />
+                <ScalarProperty Name="Emp_position" ColumnName="Emp_position" />
+                <ScalarProperty Name="Emp_birth_date" ColumnName="Emp_birth_date" />
+                <ScalarProperty Name="Emp_start_date" ColumnName="Emp_start_date" />
+                <ScalarProperty Name="Emp_stop_date" ColumnName="Emp_stop_date" />
+                <ScalarProperty Name="Emp_updated_date" ColumnName="Emp_updated_date" />
+                <ScalarProperty Name="Emp_created_date" ColumnName="Emp_created_date" />
+                <ScalarProperty Name="Emp_created_by" ColumnName="Emp_created_by" />
+                <ScalarProperty Name="Emp_updated_by" ColumnName="Emp_updated_by" />
+                <ScalarProperty Name="Emp_status" ColumnName="Emp_status" />
+                <ScalarProperty Name="Emp_username" ColumnName="Emp_username" />
+                <ScalarProperty Name="Emp_password" ColumnName="Emp_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seal_order">
+            <EntityTypeMapping TypeName="dbtestModel.Seal_order">
+              <MappingFragment StoreEntitySet="Seal_order">
+                <ScalarProperty Name="Total_Profit" ColumnName="Total_Profit" />
+                <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+                <ScalarProperty Name="Total_Revenue" ColumnName="Total_Revenue" />
+                <ScalarProperty Name="Unit_Cost" ColumnName="Unit_Cost" />
+                <ScalarProperty Name="Unit_Price" ColumnName="Unit_Price" />
+                <ScalarProperty Name="Units_Sold" ColumnName="Units_Sold" />
+                <ScalarProperty Name="Ship_Date" ColumnName="Ship_Date" />
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
+                <ScalarProperty Name="Order_Priority" ColumnName="Order_Priority" />
+                <ScalarProperty Name="Sales_Channel" ColumnName="Sales_Channel" />
+                <ScalarProperty Name="Item_Type" ColumnName="Item_Type" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_Tempolary_Factory">
+            <EntityTypeMapping TypeName="dbtestModel.TD_Tempolary_Factory">
+              <MappingFragment StoreEntitySet="TD_Tempolary_Factory">
+                <ScalarProperty Name="temp_code" ColumnName="temp_code" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="temp_name" ColumnName="temp_name" />
+                <ScalarProperty Name="temp_id" ColumnName="temp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TM_Factory">
+            <EntityTypeMapping TypeName="dbtestModel.TM_Factory">
+              <MappingFragment StoreEntitySet="TM_Factory">
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="old_num" ColumnName="old_num" />
+                <ScalarProperty Name="TSIC" ColumnName="TSIC" />
+                <ScalarProperty Name="power" ColumnName="power" />
+                <ScalarProperty Name="mand" ColumnName="mand" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="typ" ColumnName="typ" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="zib" ColumnName="zib" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="provinc" ColumnName="provinc" />
+                <ScalarProperty Name="b" ColumnName="b" />
+                <ScalarProperty Name="t" ColumnName="t" />
+                <ScalarProperty Name="s" ColumnName="s" />
+                <ScalarProperty Name="m" ColumnName="m" />
+                <ScalarProperty Name="addess" ColumnName="addess" />
+                <ScalarProperty Name="fact_use" ColumnName="fact_use" />
+                <ScalarProperty Name="fact_owner" ColumnName="fact_owner" />
+                <ScalarProperty Name="fact_name" ColumnName="fact_name" />
+                <ScalarProperty Name="fact_id" ColumnName="fact_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TM_Countrys">
+            <EntityTypeMapping TypeName="dbtestModel.TM_Countrys">
+              <MappingFragment StoreEntitySet="TM_Countrys">
+                <ScalarProperty Name="color_tag" ColumnName="color_tag" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="area_percent" ColumnName="area_percent" />
+                <ScalarProperty Name="area_two" ColumnName="area_two" />
+                <ScalarProperty Name="area_one" ColumnName="area_one" />
+                <ScalarProperty Name="country_name_en" ColumnName="country_name_en" />
+                <ScalarProperty Name="country_name_th" ColumnName="country_name_th" />
+                <ScalarProperty Name="nation_name_en" ColumnName="nation_name_en" />
+                <ScalarProperty Name="nation_name_th" ColumnName="nation_name_th" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="nation_id" ColumnName="nation_id" />
+                <ScalarProperty Name="inx" ColumnName="inx" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
