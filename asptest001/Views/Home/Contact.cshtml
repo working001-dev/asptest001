@@ -129,7 +129,7 @@
         <div class="tab-pane" id="1b">
             <h3>Tempolary Customers</h3>
             <div class="container">
-                <form id="frm-add" method="get" action="@Url.Action("Add_customer", "Customers", null, "http")">
+                <form id="frm-add" method="get" action="@Url.Action("Add_customer", "Customers", null, "http")" onsubmit="btn_submit(this)">
                     <div class="row col-md-12">
                         <div class="form-group"> 
                             
@@ -180,6 +180,8 @@
     });
 
     function btn_submit(e) {
+        $("#load-add").toggle();
+        $(this).attr("disabled", "disabled");
         console.log( this );
     }
     function add_file(e) {
