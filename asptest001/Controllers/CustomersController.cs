@@ -56,7 +56,7 @@ namespace asptest001.Controllers
                 if (file.ContentLength > 0)
                 {
                     string _FileName = Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
+                    string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), "Master_excel.xlsx");
                     file.SaveAs(_path);
                 }
                 ViewBag.Message = "File Uploaded Successfully!!";
