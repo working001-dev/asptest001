@@ -91,7 +91,7 @@
                                 var status = data.status_id;
                                 if (status == 1) {
                                     Swal.fire('Saved!', '', 'success');
-                                    console.log( $("#fac tbody tr[id-row=\"" + data.updated + "\"]") );
+                                    _setData_update($("#fac tbody tr[id-row=\"" + data.updated + "\"]"));
                                     $('#FacEdit').modal('toggle');
                                 } else {
                                     Swal.fire(data.status_massage, '', 'error');
@@ -127,7 +127,7 @@
                             ,{ "data": "fact_name"   }
                             ,{ "data": "fact_owner"  }
                             //,{ "data": "fact_use"    }
-                            , { "data": "power" }
+                            ,{ "data": "power" }
                         ],
                         rowCallback: function (row, data) {
                             $(row).attr("id-row", data.fact_id);
@@ -183,7 +183,7 @@
             function format(d) {
                 // `d` is the original data object for the row
                 console.log(d);
-                return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+                return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;" id="' + d.fact_id + '">' +
                             '<tr>' +
                                 '<td>ประกอบการ:</td>' +
                                 '<td>' + d.fact_use + '</td>' +
@@ -230,6 +230,48 @@
 
                 $('#FacEdit').modal('show');
 
+
+            }
+            function _setData_update(r) {
+
+                console.log(r.find('td:eq( 2 )').text());
+                var newData = table.row(r).data();
+                var fact_used = $('#FacEdit input[name="fact_used"').val();
+                var fact_mand = $('#FacEdit input[name="fact_mand"').val();
+                var fact_mony = $('#FacEdit input[name="fact_mony"').val();
+                var a = $('#FacEdit input[name="fact_adds"').val();
+                var m = $('#FacEdit input[name="fact_m"').val();
+                var t = $('#FacEdit input[name="fact_t"').val();
+                var s = $('#FacEdit input[name="fact_s"').val();
+                var b = $('#FacEdit input[name="fact_b"').val();
+                var p = $('#FacEdit input[name="fact_povc"').val();
+                var c = $('#FacEdit input[name="fact_city"').val();
+                var phone = $('#FacEdit input[name="fact_phon"').val();
+
+                var fact_adds = a + '  หมู่ ' + m + '  ถนน ' + t + '  ซอย ' + s + '  ตำบล ' + b + '  อำเภอ ' + p + '  จังหวัด ' + c + '  โทร ' + phone;
+
+                newData.fact_name = $('#FacEdit input[name="fact_name"').val();
+                newData.power = $('#FacEdit input[name="fact_powe"').val();
+                newData.mand  = $('#FacEdit input[name="fact_mand"').val();
+                newData.money = $('#FacEdit input[name="fact_mony"').val();
+                newData.addess = $('#FacEdit input[name="fact_adds"').val();
+                newData.m = $('#FacEdit input[name="fact_m"').val();
+                newData.t = $('#FacEdit input[name="fact_t"').val();
+                newData.s = $('#FacEdit input[name="fact_s"').val();
+                newData.b = $('#FacEdit input[name="fact_b"').val();
+                newData.provinc = $('#FacEdit input[name="fact_povc"').val();
+                newData.city = $('#FacEdit input[name="fact_city"').val();
+                newData.phone = $('#FacEdit input[name="fact_phon"').val();
+
+                console.log($("#" + newData.fact_id).find('tr:eq(0)').find('td:eq(1)').text())
+                $("#" + newData.fact_id).find('tr:eq(0)').find('td:eq(1)').text(fact_used);
+                $("#" + newData.fact_id).find('tr:eq(1)').find('td:eq(1)').text(fact_adds);
+                $("#" + newData.fact_id).find('tr:eq(2)').find('td:eq(1)').text(fact_mand + ' คน.');
+                $("#" + newData.fact_id).find('tr:eq(3)').find('td:eq(1)').text(fact_mony.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' บาท.');
+                console.log(newData);
+                table.row(r).data(newData).draw();
+                console.log(r.find('td:eq( 2 )').text());
+                //$('#FacEdit').modal('show'); 
 
             }
         </script>
