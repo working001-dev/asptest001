@@ -484,6 +484,7 @@
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\styles\alert-bangtidy.css" />
     <Content Include="Content\styles\alert-blackgloss.css" />
+    <Content Include="Content\Sweetalert2\corejs.js" />
     <Content Include="Content\Sweetalert2\sweetalert2.all.js" />
     <Content Include="Content\Sweetalert2\sweetalert2.all.min.js" />
     <Content Include="Content\Sweetalert2\sweetalert2.css" />

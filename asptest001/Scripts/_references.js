@@ -6,6 +6,7 @@
 /// <reference path="../Assets/DataTables/DataTables-1.10.21/js/dataTables.jqueryui.js" />
 /// <reference path="../Assets/DataTables/DataTables-1.10.21/js/dataTables.semanticui.js" />
 /// <reference path="../Assets/DataTables/DataTables-1.10.21/js/jquery.dataTables.js" />
+/// <reference path="../content/sweetalert2/corejs.js" />
 /// <reference path="../content/sweetalert2/sweetalert2.all.js" />
 /// <reference path="../content/sweetalert2/sweetalert2.js" />
 /// <reference path="ai.0.22.9-build00167.js" />

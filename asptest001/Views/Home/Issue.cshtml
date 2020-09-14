@@ -82,9 +82,9 @@
                         title: 'Do you want to save the changes?',
                         showDenyButton: true,
                         showCancelButton: true,
-                        confirmButtonText: `Save`,
-                        denyButtonText: `Don't save`,
-                    }).then((result) => {
+                        confirmButtonText: 'Save',
+                        denyButtonText:  'Don\'t save',
+                    }).then(function(result) {
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
                             $.get("@Url.Action("_upd_Factory", "Home")", $("#FacEdit .modal-body form.modal-edit").serialize(), function (data) {
