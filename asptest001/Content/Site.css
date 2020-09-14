@@ -4,20 +4,29 @@
 }
 
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 95px;
+    /*padding-bottom: 20px;*/
     background: linear-gradient(90deg, #0053b826, #0053b826,#67bf93);
     background: -ms-linear-gradient(left, #efefef, #67bf93);
     /*-webkit-background-image: -ms-linear-gradient(90deg, #0053b826, #0053b826,#67bf93);*/
     /*min-height:100%;*/
-    height: auto;
+    height: 100%;
 }
-
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 15px 0 15px;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    margin-top: 35px;
+    /*margin-top: 35px;*/
     padding-left: 15px;
     padding-right: 15px;
+    min-height:100%;
+    position:relative;
+    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -53,7 +62,7 @@ textarea {
 }
 
 .nav-login li {
-    margin: 8px;
+    margin: 15px;
 }
 
 .nav-logout {
@@ -62,23 +71,41 @@ textarea {
     padding: 15px 15px;
     line-height: 20px;
 }
-
+.head-login{
+    padding: 10px 80px 10px 10px;
+    border: 2px solid #428bca;
+    border-radius: 10px 4px 4px 10px;
+    position: relative;
+    transition: border-color 0.2s, height 0.5s, box-shadow 0.5s;
+}
 .btn-logout {
-    margin-top: -25px;
-    margin-left: 15px;
-    border-radius: 70px;
-    height: 70px;
-    background: rgba(79, 206, 161, 0.63);
-    transition: box-shadow 0.5s linear;
+    position: absolute;
+    right: -1px;
+    top: 0;
+    border: none;
+     border-radius: 0px 2px 3px 0px;
+    height: 104%;
+    width: 40px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*box-sizing: unset;*/
+    background:#428bca;
+    transition: background 0.2s, height 0.5s, box-shadow 0.5s;
 }
 
-    .btn-logout:hover, .btn-logout:focus {
-        border: none !important;
-        outline: none;
-        box-shadow: 2px 0px 5px rgba(0, 1, 29, 0.63);
-    }
-
-.navbar:hover {
+.btn-logout:hover, .btn-logout:focus {
+    border: none !important;
+    outline: none;
+    box-shadow: 0px 0px 0px rgba(0, 1, 29, 0.63);
+}
+.navbar:hover .btn-logout, .navbar-scroll .btn-logout{
+    background:#6dc198;
+}
+.navbar:hover .head-login, .navbar-scroll .head-login{
+    border-color:#6dc198;
+}
+.navbar:hover{
     /*background: linear-gradient(to right, rgba(0, 0, 255, 0.6), rgba(14, 15, 227, 0.60));*/
     background: #428bca; /*-90deg,*/
     box-shadow: 0px 5px 10px rgba(0, 1, 29, 0.63);
@@ -86,6 +113,7 @@ textarea {
 
 .navbar-scroll {
     /*background: linear-gradient(to right, rgba(0, 0, 255, 0.6), rgba(14, 15, 227, 0.60));*/
+    color: white;
     background: #428bca; /*-90deg,*/
     box-shadow: 0px 5px 10px rgba(0, 1, 29, 0.63);
 }
@@ -94,9 +122,35 @@ textarea {
     color: black;
 }
 
-.navbar:hover a, .navbar:hover li > a, .navbar:hover .nav-logout {
+.navbar:hover a, .navbar:hover li > a, .navbar:hover .head-login, .navbar-scroll .navbar-nav > li > a,.navbar-scroll .navbar-brand  {
     color: white;
 }
+.row{
+    margin:0;
+    margin-bottom: 80px;
+}
+body::-webkit-scrollbar { 
+  display: none;
+}
+        ::-webkit-scrollbar { 
+            position:fixed;
+            width: 6px; 
+        }  
+        /* Track */ 
+        ::-webkit-scrollbar-track { 
+            background: gainsboro; 
+            border-radius: 5px; 
+        }  
+        /* Handle */ 
+        ::-webkit-scrollbar-thumb { 
+            background: black; 
+            border-radius: 5px; 
+        }  
+        /* Handle on hover */ 
+        ::-webkit-scrollbar-thumb:hover { 
+            background: #555; 
+        }
+
 
 .root {
     /*overflow-x: auto;*/

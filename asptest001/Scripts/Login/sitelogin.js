@@ -1,5 +1,9 @@
-﻿$(document).ready(function () {
+﻿
+
+$(document).ready(function () {
     var notify = undefined;
+    var loop = 0;
+    
     window.addEventListener('beforeunload', function(event){
         //event.returnValue = 'Are you sure you want to leave?';
     });
@@ -21,33 +25,34 @@
 //});
 
 
-function submit_form(e) {
-    e.preventDefault();
+function submit_form() {
+    
+    //notify = set_notify();
+
     var uid = $("input[name='uid']").val();
     var pas = $.md5($("input[name='pass']").val());
-    notify = set_notify(); //$.notify('<strong>Loging</strong> :Checking username and password. Please wait....' );
+     //$.notify('<strong>Loging</strong> :Checking username and password. Please wait....' );
 
-    $.ajax({
-        url: $("#loginForm").attr("action"),
-        type: "POST",
-        dataType: "html",
-        data: { uid: uid, pass: pas },
-        cache: false,
-        success: function (data) {
-            set_login(data);
-        },
-        error: function (xhr, status, error) {
-            console.log(xhr.responseText);
-        }
-    });
+    if (uid == "" || pas == "") {
+        notify = set_notify('<strong>Loging</strong> :Checking username and password. Please wait....','danger');
+        //notify.update({ 'type': 'danger', 'message': '<strong>Fail</strong> :Your login failed. Please check your username or password.' })
+        $("input[name='uid']").attr("style", "border:2px solid red");
+        $("input[name='pass']").attr("style", "border:2px solid red");
+    } else {
+        //$("input[name='pass']").val(pas);
+        //console.log($("input[name='pass']").val());
+        notify = set_notify('<strong>Loging</strong> :Checking username and password. Please wait....', 'info');
+        $("#loginForm").submit();
+        //return 0;
+    }
 
-    console.log(uid + " => " + pas + " => " + $("#loginForm").attr("action"));
+    
     }
 
 
     function set_login(data) {
         //Fill div with results
-        $(".body-content").html(data);
+        $("*").html(data);
         if ($("val").html() !== undefined) {
             notify.update({ 'type': 'success', 'message': '<strong>Success</strong> :Your Login successful...' });
             $("#member-login").html('');
@@ -57,12 +62,13 @@ function submit_form(e) {
             $("#loginForm").attr("action", $("val").attr("link"));
             $("#loginForm").attr("onsubmit", "alert('Logout nakeub!');");
 
-            set_table();
+            //set_table();
         }
         else {
             notify.update({ 'type': 'danger', 'message': '<strong>Fail</strong> :Your login failed. Please check your username or password.' })
             $("input[name='uid']").attr("style",  "border:2px solid red");
             $("input[name='pass']").attr("style", "border:2px solid red");
+            console.log(data);
         }
     }
     
@@ -87,18 +93,18 @@ function submit_form(e) {
         })
     }
 
-    function set_notify() { 
-        return $.notify('<strong>Loging</strong> :Checking username and password. Please wait....'
+    function set_notify( mes,type ) { 
+        return $.notify( mes
                 , {
                   allow_dismiss: false
-                , type: 'info'
+                , type: type
                 , placement: {
                     from: "top",
-                    align: "left"
+                    align: "right"
                 }
                 , offset: {
-                    x: 390,
-                    y: 5
+                    x: 220,
+                    y: 85
                 }
                 , delay: 1000
                 , spacing: 20

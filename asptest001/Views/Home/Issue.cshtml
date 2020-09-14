@@ -1,0 +1,236 @@
+﻿
+@{
+    ViewBag.Title = "Issue";
+}
+@section links{ 
+<link href="~/Assets/DataTables/datatables.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+    /*@@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;1,100;1,200;1,300;1,400&display=swap');*/
+    .tbl-fac{
+        font-family: 'Sarabun', sans-serif;
+        font-weight:400;
+    }
+    .tbl-fac th:nth-child(1){
+        width:12px;
+    }
+    .tbl-fac th:nth-child(2){
+        width:80px !important;
+    }
+    .tbl-fac th:nth-child(3){
+        width:200px;
+    }
+    .tbl-fac td{
+        white-space: nowrap;
+        /*width: 200px;*/
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    }
+    .details-control{
+        cursor:pointer;
+    }
+    .btn-fac{
+        margin-left:2px;
+        font-size:12px;
+        padding:4px 8px;
+        color:white;
+    }
+    .btn-fac:hover, .btn-fac:focus:active{
+        color:#faea93;
+    }
+    .btn-edit{
+        background:#1d583e;
+    }
+    .btn-remv{
+        background:#f84848;
+        color:white;
+    } 
+</style>    
+}
+<div class="row">
+    <h2>Issue</h2>
+
+    <table class="table table-hover tbl-fac" id="fac">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>รหัสโรงงาน</th>
+                <th>ชื่อโรงงาน</th>
+                <th>ชื่อเจ้าของ</th>
+                @*<th>ประกอบการ</th>*@
+                <th>power</th>
+            </tr>
+        </thead>
+        <tbody> </tbody>
+    </table>
+</div>
+@Html.Partial("Modal/_Modal_Factory_Edit")
+@section scripts{
+        <script src="~/Assets/DataTables/datatables.min.js"></script>
+
+        <script>
+            var table = undefined;
+            $(document).ready(function () {
+                _table_set();
+
+                $('#FacEdit button.save-modal').on('click', function () {
+
+                    //console.log($("#FacEdit .modal-body form.modal-edit").serialize() )
+                    //console.log($("#FacEdit .modal-body form.modal-edit").serializeArray())
+                    Swal.fire({
+                        title: 'Do you want to save the changes?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: `Save`,
+                        denyButtonText: `Don't save`,
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            $.get("@Url.Action("_upd_Factory", "Home")", $("#FacEdit .modal-body form.modal-edit").serialize(), function (data) {
+                                var status = data.status_id;
+                                if (status == 1) {
+                                    Swal.fire('Saved!', '', 'success');
+                                    console.log( $("#fac tbody tr[id-row=\"" + data.updated + "\"]") );
+                                    $('#FacEdit').modal('toggle');
+                                } else {
+                                    Swal.fire(data.status_massage, '', 'error');
+                                    console.log(data);
+                                }
+                            });
+                           
+                        } else if (result.isDenied) {
+                            Swal.fire('Changes are not saved', '', 'info')
+                        }
+                    })
+  
+                    //console.log($("#FacEdit .modal-body form.modal-edit").serializeArray());
+                });
+            });
+
+            function _table_set(){
+                if (table === undefined) {
+                    table = $("#fac").DataTable({
+                        "processing": false,
+                        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                        "ajax": "@Url.Action("_get_Factory", "Home")",
+                        "order": [[1, 'asc']],
+                        "columns": [
+                            {
+                                "className": 'details-control',
+                                "data-ti" : '1',
+                                "orderable": false,
+                                "data": null,
+                                "defaultContent": '<span class="glyphicon glyphicon-plus"></span>'
+                            }
+                            ,{ "data": "fact_id"     }
+                            ,{ "data": "fact_name"   }
+                            ,{ "data": "fact_owner"  }
+                            //,{ "data": "fact_use"    }
+                            , { "data": "power" }
+                        ],
+                        rowCallback: function (row, data) {
+                            $(row).attr("id-row", data.fact_id);
+                        }
+                    });
+                    $('#fac tbody').on('click', 'td.details-control', function () {
+                        var tr = $(this).closest('tr');
+                        var row = table.row(tr);
+                        console.log(tr);
+                        if (row.child.isShown()) {
+                            // This row is already open - close it
+
+                            //tr.removeClass('shown');
+
+                            $(this).html("<span class=\"glyphicon glyphicon-plus\"></span>");
+                            row.child.hide();
+                        }
+                        else {
+                            // Open this row
+                            $(this).html("<span class=\"glyphicon glyphicon-minus\"></span>");
+                            row.child(format(row.data())).show();
+                            //tr.addClass('shown');
+                        }
+                    });
+                    $('#fac tbody').on('click', 'tr button.btn-edit', function () {
+
+                        var tr = $(this).closest('table').parents('tr').prev();
+
+                        var row = table.row(tr);
+                        _editData(row.data());
+                    });
+                }
+                else
+                    table.destroy();
+            }
+
+            function _table_data() {
+                $.post("@Url.Action("_get_Factory", "Home")", function (data) {
+                    console.log()
+                    var d = data["data"];
+                    for (i in d) {
+                        table.row.add([
+                             d[i] ["fact_id"]
+                            , d[i]["fact_name"]
+                            , d[i]["fact_owner"]
+                            , d[i]["fact_use"]
+                            , d[i]["b"]
+                        ]).draw(true);
+                    }
+
+                });
+            }
+            function format(d) {
+                // `d` is the original data object for the row
+                console.log(d);
+                return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+                            '<tr>' +
+                                '<td>ประกอบการ:</td>' +
+                                '<td>' + d.fact_use + '</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                                '<td>ที่ตั้ง:</td>' +
+                                '<td>' + d.addess + '  หมู่ ' + d.m + '  ถนน ' + d.t + '  ซอย ' + d.s + '  ตำบล ' + d.b + '  อำเภอ ' + d.provinc + '  จังหวัด ' + d.city + '  โทร ' +d.phone +'</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                                '<td>พนักงาน:</td>' +
+                                '<td>'+d.mand+' คน.</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                                '<td>เงินทุน:</td>' +
+                                '<td>' + d.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' บาท.</td>' +
+                            '</tr>' +
+                            '<tr>' +
+                                '<td><span class="glyphicon glyphicon-cog"></span></td>' +
+                                '<td>'  +
+                                    '<button class="btn btn-fac btn-edit"><span class="glyphicon glyphicon-edit"></span></button>'  +
+                                    '<button class="btn btn-fac btn-remv"><span class="glyphicon glyphicon-trash"></span></button>' +
+                                '</td>' +
+                            '</tr>' +
+                      '</table>';
+            }
+
+            function _editData(d) {
+
+                $('#FacEdit input[name="fact_code"').val(d.fact_id);
+                $('#FacEdit input[name="fact_name"').val(d.fact_name);
+                $('#FacEdit input[name="fact_used"').val(d.fact_use);
+                $('#FacEdit input[name="fact_powe"').val(d.power);
+                $('#FacEdit input[name="fact_mand"').val(d.mand);
+                $('#FacEdit input[name="fact_mony"').val(d.money);
+                $('#FacEdit input[name="fact_adds"').val(d.addess);
+                $('#FacEdit input[name="fact_m"').val(d.m);
+                $('#FacEdit input[name="fact_t"').val(d.t);
+                $('#FacEdit input[name="fact_s"').val(d.s);
+                $('#FacEdit input[name="fact_b"').val(d.b);
+                $('#FacEdit input[name="fact_povc"').val(d.provinc);
+                $('#FacEdit input[name="fact_city"').val(d.city);
+                $('#FacEdit input[name="fact_phon"').val(d.phone);
+
+
+                $('#FacEdit').modal('show');
+
+
+            }
+        </script>
+}

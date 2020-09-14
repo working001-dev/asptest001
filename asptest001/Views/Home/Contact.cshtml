@@ -105,6 +105,10 @@
             margin: 0px 5px 0;
             height: 42px;
         }
+
+        input[type="submit"]{
+            color:darkcyan;
+        }
     </style>
 }
 @if (ViewBag.Flg == "1") {
@@ -122,7 +126,7 @@
         <li><a href="#1b" data-toggle="tab">Add Tempolary Factorys</a></li>
         <li><a href="#2b" data-toggle="tab">Update master form excel</a></li>
         <li><a href="#3b" data-toggle="tab">Applying clearfix</a></li>
-        <li><a href="#4a" data-toggle="tab">Background color</a></li>
+        <li><a href="#4b" data-toggle="tab">Background color</a></li>
     </ul>
 
     <div class="tab-content clearfix">
@@ -162,10 +166,26 @@
             }
         </div>
         <div class="tab-pane" id="3b">
-            <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+            @{Html.BeginForm("CreateDocument", "Home", FormMethod.Get);
+                {
+                    <div>
+                        <input type="submit" value="Create Document" style="width:150px;height:27px" />
+                    </div>
+                }
+                Html.EndForm();
+            }
         </div>
         <div class="tab-pane" id="4b">
             <h3>We use css to change the background color of the content to be equal to the tab</h3>
+            @{Html.BeginForm("Curexport_report", "Home", FormMethod.Get);
+                {
+                    <div>
+                        <input type="submit" value="Create Document" class="btn btn-danger"  />
+                        <input type="button" value="Create PDF File" class="btn btn-warning" name="pdf_export" onclick="P_export()" />
+                    </div>
+                }
+                Html.EndForm();
+            }
         </div>
     </div>
 </div>
@@ -189,6 +209,14 @@
         console.log(up);
         console.log(up[0].files.name);
         $("#inputGroupFileAddon01").html(up[0].files[0].name);
+    }
+
+
+    //$('input[name="pdf_export"').click(function () {
+    //    window.open('@Url.Action("Pdf_export", "Home")');
+    //});
+    function P_export() {
+        window.open('@Url.Action("Pdf_export", "Home")');
     }
 
 </script>

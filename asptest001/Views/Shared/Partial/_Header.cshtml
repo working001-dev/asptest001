@@ -5,20 +5,29 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
+
         <div class="navbar-header">
+@if (Session["InsuredKey"] != null && Session["InsuredKey"].ToString() == "1")
+{
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+}
+            @Html.ActionLink("Application name", "MainHome", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
+
         <div class="navbar-collapse collapse navbar-head">
+@if (Session["InsuredKey"] != null && Session["InsuredKey"].ToString() == "1")
+{ 
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Home", "MainHome", "Home")</li>
+                <li>@Html.ActionLink("Issue", "Issue", "Home")</li>
                 <li>@Html.ActionLink("About", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
             </ul>
+}
             @Html.Partial("./_LoginPartial")
         </div> 
     </div>

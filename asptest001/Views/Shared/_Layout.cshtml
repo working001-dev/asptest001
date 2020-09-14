@@ -3,9 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta Http-Equiv="Cache-Control" Content="no-cache" />
+    <meta Http-Equiv="Pragma" Content="no-cache" />
+    <meta Http-Equiv="Expires" Content="0" />
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css") 
     @Styles.Render("~/Content/app")
+    <link href="~/Content/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
     @RenderSection("links", required: false)
 </head>
 <body>
@@ -13,14 +17,33 @@
     @Html.Partial("Partial/_Header")
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        
         <footer>
+            <hr />
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div> 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/app")
+    <script src="~/Content/Sweetalert2/sweetalert2.min.js"></script>
     @RenderSection("scripts", required: false)  
+    <script>
+        var ale = "@Session["InsuredKey"]";
+
+        $(document).ready(function () {
+            if("@Session["Online"]" == "")
+            switch (ale) {
+                case "1":
+                    notify = set_notify('<strong>Success</strong> :Your Login successful...', 'success');
+                    $.post("@Url.Action("setOnprogram", "Home")");
+                    break;
+                case "0":
+                    notify = set_notify('<strong>Fail</strong> :Your login failed. Please check your username or password.', 'danger');
+                    break;
+                default: return 0;
+            }
+        });
+    </script> 
 </body>
 </html>

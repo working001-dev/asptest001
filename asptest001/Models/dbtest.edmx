@@ -1,0 +1,683 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbtestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CURENTCY_MASTER">
+          <Key>
+            <PropertyRef Name="EXC_ALIAS" />
+          </Key>
+          <Property Name="EXC_ALIAS" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="EXC_NUM" Type="float" />
+          <Property Name="EXC_NAME" Type="nchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Employee_member">
+          <Key>
+            <PropertyRef Name="Emp_inx" />
+          </Key>
+          <Property Name="Emp_inx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Emp_efname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Emp_elname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Emp_tfname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Emp_tlname" Type="nvarchar" MaxLength="100" />
+          <Property Name="Emp_position" Type="nchar" MaxLength="10" />
+          <Property Name="Emp_birth_date" Type="datetime" />
+          <Property Name="Emp_start_date" Type="datetime" />
+          <Property Name="Emp_stop_date" Type="datetime" />
+          <Property Name="Emp_updated_date" Type="datetime" />
+          <Property Name="Emp_created_date" Type="datetime" />
+          <Property Name="Emp_created_by" Type="nchar" MaxLength="10" />
+          <Property Name="Emp_updated_by" Type="nchar" MaxLength="10" />
+          <Property Name="Emp_status" Type="nchar" MaxLength="10" />
+          <Property Name="Emp_username" Type="nchar" MaxLength="100" />
+          <Property Name="Emp_password" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="EXCHANGERATES">
+          <Key>
+            <PropertyRef Name="INS" />
+          </Key>
+          <Property Name="INS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EXC_DATE" Type="datetime" />
+          <Property Name="CAD" Type="float" />
+          <Property Name="HKD" Type="float" />
+          <Property Name="ISK" Type="float" />
+          <Property Name="PHP" Type="float" />
+          <Property Name="DKK" Type="float" />
+          <Property Name="HUF" Type="float" />
+          <Property Name="CZK" Type="float" />
+          <Property Name="GBP" Type="float" />
+          <Property Name="RON" Type="float" />
+          <Property Name="SEK" Type="float" />
+          <Property Name="IDR" Type="float" />
+          <Property Name="INR" Type="float" />
+          <Property Name="BRL" Type="float" />
+          <Property Name="RUB" Type="float" />
+          <Property Name="HRK" Type="float" />
+          <Property Name="JPY" Type="float" />
+          <Property Name="THB" Type="float" />
+          <Property Name="CHF" Type="float" />
+          <Property Name="EUR" Type="float" />
+          <Property Name="MYR" Type="float" />
+          <Property Name="BGN" Type="float" />
+          <Property Name="TRY" Type="float" />
+          <Property Name="CNY" Type="float" />
+          <Property Name="NOK" Type="float" />
+          <Property Name="NZD" Type="float" />
+          <Property Name="ZAR" Type="float" />
+          <Property Name="USD" Type="float" />
+          <Property Name="MXN" Type="float" />
+          <Property Name="SGD" Type="float" />
+          <Property Name="AUD" Type="float" />
+          <Property Name="ILS" Type="float" />
+          <Property Name="KRW" Type="float" />
+          <Property Name="PLN" Type="float" />
+        </EntityType>
+        <EntityType Name="Seal_order">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Region" Type="nvarchar" MaxLength="100" />
+          <Property Name="Country" Type="nvarchar" MaxLength="100" />
+          <Property Name="Item_Type" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sales_Channel" Type="nvarchar" MaxLength="100" />
+          <Property Name="Order_Priority" Type="nvarchar" MaxLength="100" />
+          <Property Name="Order_Date" Type="nvarchar" MaxLength="10" />
+          <Property Name="Order_ID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ship_Date" Type="nvarchar" MaxLength="10" />
+          <Property Name="Units_Sold" Type="float" />
+          <Property Name="Unit_Price" Type="float" />
+          <Property Name="Unit_Cost" Type="float" />
+          <Property Name="Total_Revenue" Type="float" />
+          <Property Name="Total_Cost" Type="float" />
+          <Property Name="Total_Profit" Type="float" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TD_Tempolary_Factory">
+          <Key>
+            <PropertyRef Name="temp_id" />
+          </Key>
+          <Property Name="temp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="temp_code" Type="nvarchar" MaxLength="20" />
+          <Property Name="temp_name" Type="nvarchar" MaxLength="250" />
+          <Property Name="created_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TM_Countrys">
+          <Key>
+            <PropertyRef Name="inx" />
+          </Key>
+          <Property Name="inx" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nation_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="country_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="nation_name_th" Type="nvarchar" MaxLength="255" />
+          <Property Name="nation_name_en" Type="nvarchar" MaxLength="255" />
+          <Property Name="country_name_th" Type="nvarchar" MaxLength="255" />
+          <Property Name="country_name_en" Type="nvarchar" MaxLength="255" />
+          <Property Name="area_one" Type="nvarchar" MaxLength="255" />
+          <Property Name="area_two" Type="nvarchar" MaxLength="255" />
+          <Property Name="area_percent" Type="nvarchar" MaxLength="255" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="255" />
+          <Property Name="color_tag" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TM_Factory">
+          <Key>
+            <PropertyRef Name="fact_id" />
+          </Key>
+          <Property Name="fact_id" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="fact_name" Type="nvarchar" MaxLength="250" />
+          <Property Name="fact_owner" Type="nvarchar" MaxLength="250" />
+          <Property Name="fact_use" Type="nvarchar" MaxLength="250" />
+          <Property Name="addess" Type="nvarchar" MaxLength="100" />
+          <Property Name="m" Type="nvarchar" MaxLength="100" />
+          <Property Name="s" Type="nvarchar" MaxLength="100" />
+          <Property Name="t" Type="nvarchar" MaxLength="100" />
+          <Property Name="b" Type="nvarchar" MaxLength="100" />
+          <Property Name="provinc" Type="nvarchar" MaxLength="100" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" />
+          <Property Name="zib" Type="nvarchar" MaxLength="10" />
+          <Property Name="phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="typ" Type="nvarchar" MaxLength="20" />
+          <Property Name="money" Type="nvarchar" MaxLength="20" />
+          <Property Name="mand" Type="nvarchar" MaxLength="20" />
+          <Property Name="power" Type="nvarchar" MaxLength="20" />
+          <Property Name="TSIC" Type="nvarchar" MaxLength="20" />
+          <Property Name="old_num" Type="nvarchar" MaxLength="120" />
+          <Property Name="create_date" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbtest.dbo.VW_EXCHENGERATES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VW_EXCHENGERATES">
+          <Key>
+            <PropertyRef Name="INS" />
+          </Key>
+          <Property Name="EXCHENGE_DATE" Type="datetime" />
+          <Property Name="CAD" Type="float" />
+          <Property Name="HKD" Type="float" />
+          <Property Name="ISK" Type="float" />
+          <Property Name="PHP" Type="float" />
+          <Property Name="DKK" Type="float" />
+          <Property Name="HUF" Type="float" />
+          <Property Name="CZK" Type="float" />
+          <Property Name="GBP" Type="float" />
+          <Property Name="RON" Type="float" />
+          <Property Name="SEK" Type="float" />
+          <Property Name="IDR" Type="float" />
+          <Property Name="INR" Type="float" />
+          <Property Name="BRL" Type="float" />
+          <Property Name="RUB" Type="float" />
+          <Property Name="HRK" Type="float" />
+          <Property Name="JPY" Type="float" />
+          <Property Name="THB" Type="float" />
+          <Property Name="CHF" Type="float" />
+          <Property Name="EUR" Type="float" />
+          <Property Name="MYR" Type="float" />
+          <Property Name="BGN" Type="float" />
+          <Property Name="TRY" Type="float" />
+          <Property Name="CNY" Type="float" />
+          <Property Name="NOK" Type="float" />
+          <Property Name="NZD" Type="float" />
+          <Property Name="ZAR" Type="float" />
+          <Property Name="USD" Type="float" />
+          <Property Name="MXN" Type="float" />
+          <Property Name="SGD" Type="float" />
+          <Property Name="AUD" Type="float" />
+          <Property Name="ILS" Type="float" />
+          <Property Name="KRW" Type="float" />
+          <Property Name="PLN" Type="float" />
+          <Property Name="INS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dbtestModelStoreContainer">
+          <EntitySet Name="CURENTCY_MASTER" EntityType="Self.CURENTCY_MASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_member" EntityType="Self.Employee_member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EXCHANGERATES" EntityType="Self.EXCHANGERATES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seal_order" EntityType="Self.Seal_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TD_Tempolary_Factory" EntityType="Self.TD_Tempolary_Factory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TM_Countrys" EntityType="Self.TM_Countrys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TM_Factory" EntityType="Self.TM_Factory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VW_EXCHENGERATES" EntityType="Self.VW_EXCHENGERATES" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_EXCHENGERATES].[EXCHENGE_DATE] AS [EXCHENGE_DATE], 
+    [VW_EXCHENGERATES].[CAD] AS [CAD], 
+    [VW_EXCHENGERATES].[HKD] AS [HKD], 
+    [VW_EXCHENGERATES].[ISK] AS [ISK], 
+    [VW_EXCHENGERATES].[PHP] AS [PHP], 
+    [VW_EXCHENGERATES].[DKK] AS [DKK], 
+    [VW_EXCHENGERATES].[HUF] AS [HUF], 
+    [VW_EXCHENGERATES].[CZK] AS [CZK], 
+    [VW_EXCHENGERATES].[GBP] AS [GBP], 
+    [VW_EXCHENGERATES].[RON] AS [RON], 
+    [VW_EXCHENGERATES].[SEK] AS [SEK], 
+    [VW_EXCHENGERATES].[IDR] AS [IDR], 
+    [VW_EXCHENGERATES].[INR] AS [INR], 
+    [VW_EXCHENGERATES].[BRL] AS [BRL], 
+    [VW_EXCHENGERATES].[RUB] AS [RUB], 
+    [VW_EXCHENGERATES].[HRK] AS [HRK], 
+    [VW_EXCHENGERATES].[JPY] AS [JPY], 
+    [VW_EXCHENGERATES].[THB] AS [THB], 
+    [VW_EXCHENGERATES].[CHF] AS [CHF], 
+    [VW_EXCHENGERATES].[EUR] AS [EUR], 
+    [VW_EXCHENGERATES].[MYR] AS [MYR], 
+    [VW_EXCHENGERATES].[BGN] AS [BGN], 
+    [VW_EXCHENGERATES].[TRY] AS [TRY], 
+    [VW_EXCHENGERATES].[CNY] AS [CNY], 
+    [VW_EXCHENGERATES].[NOK] AS [NOK], 
+    [VW_EXCHENGERATES].[NZD] AS [NZD], 
+    [VW_EXCHENGERATES].[ZAR] AS [ZAR], 
+    [VW_EXCHENGERATES].[USD] AS [USD], 
+    [VW_EXCHENGERATES].[MXN] AS [MXN], 
+    [VW_EXCHENGERATES].[SGD] AS [SGD], 
+    [VW_EXCHENGERATES].[AUD] AS [AUD], 
+    [VW_EXCHENGERATES].[ILS] AS [ILS], 
+    [VW_EXCHENGERATES].[KRW] AS [KRW], 
+    [VW_EXCHENGERATES].[PLN] AS [PLN], 
+    [VW_EXCHENGERATES].[INS] AS [INS]
+    FROM [dbo].[VW_EXCHENGERATES] AS [VW_EXCHENGERATES]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbtestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CURENTCY_MASTER">
+          <Key>
+            <PropertyRef Name="EXC_ALIAS" />
+          </Key>
+          <Property Name="EXC_ALIAS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="EXC_NUM" Type="Double" />
+          <Property Name="EXC_NAME" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee_member">
+          <Key>
+            <PropertyRef Name="Emp_inx" />
+          </Key>
+          <Property Name="Emp_inx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Emp_efname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_elname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_tfname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_tlname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_position" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_birth_date" Type="DateTime" Precision="3" />
+          <Property Name="Emp_start_date" Type="DateTime" Precision="3" />
+          <Property Name="Emp_stop_date" Type="DateTime" Precision="3" />
+          <Property Name="Emp_updated_date" Type="DateTime" Precision="3" />
+          <Property Name="Emp_created_date" Type="DateTime" Precision="3" />
+          <Property Name="Emp_created_by" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_updated_by" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_username" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Emp_password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EXCHANGERATES">
+          <Key>
+            <PropertyRef Name="INS" />
+          </Key>
+          <Property Name="INS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EXC_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CAD" Type="Double" />
+          <Property Name="HKD" Type="Double" />
+          <Property Name="ISK" Type="Double" />
+          <Property Name="PHP" Type="Double" />
+          <Property Name="DKK" Type="Double" />
+          <Property Name="HUF" Type="Double" />
+          <Property Name="CZK" Type="Double" />
+          <Property Name="GBP" Type="Double" />
+          <Property Name="RON" Type="Double" />
+          <Property Name="SEK" Type="Double" />
+          <Property Name="IDR" Type="Double" />
+          <Property Name="INR" Type="Double" />
+          <Property Name="BRL" Type="Double" />
+          <Property Name="RUB" Type="Double" />
+          <Property Name="HRK" Type="Double" />
+          <Property Name="JPY" Type="Double" />
+          <Property Name="THB" Type="Double" />
+          <Property Name="CHF" Type="Double" />
+          <Property Name="EUR" Type="Double" />
+          <Property Name="MYR" Type="Double" />
+          <Property Name="BGN" Type="Double" />
+          <Property Name="TRY" Type="Double" />
+          <Property Name="CNY" Type="Double" />
+          <Property Name="NOK" Type="Double" />
+          <Property Name="NZD" Type="Double" />
+          <Property Name="ZAR" Type="Double" />
+          <Property Name="USD" Type="Double" />
+          <Property Name="MXN" Type="Double" />
+          <Property Name="SGD" Type="Double" />
+          <Property Name="AUD" Type="Double" />
+          <Property Name="ILS" Type="Double" />
+          <Property Name="KRW" Type="Double" />
+          <Property Name="PLN" Type="Double" />
+        </EntityType>
+        <EntityType Name="Seal_order">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Region" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Item_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sales_Channel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Order_Priority" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Order_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Order_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ship_Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Units_Sold" Type="Double" />
+          <Property Name="Unit_Price" Type="Double" />
+          <Property Name="Unit_Cost" Type="Double" />
+          <Property Name="Total_Revenue" Type="Double" />
+          <Property Name="Total_Cost" Type="Double" />
+          <Property Name="Total_Profit" Type="Double" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TD_Tempolary_Factory">
+          <Key>
+            <PropertyRef Name="temp_id" />
+          </Key>
+          <Property Name="temp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="temp_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="temp_name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="created_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TM_Countrys">
+          <Key>
+            <PropertyRef Name="inx" />
+          </Key>
+          <Property Name="inx" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nation_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="country_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nation_name_th" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="nation_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="country_name_th" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="country_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="area_one" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="area_two" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="area_percent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="color_tag" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TM_Factory">
+          <Key>
+            <PropertyRef Name="fact_id" />
+          </Key>
+          <Property Name="fact_id" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fact_name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="fact_owner" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="fact_use" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="addess" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="m" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="s" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="t" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="b" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="provinc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="zib" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="typ" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="money" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mand" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="power" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TSIC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="old_num" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="VW_EXCHENGERATES">
+          <Key>
+            <PropertyRef Name="INS" />
+          </Key>
+          <Property Name="EXCHENGE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CAD" Type="Double" />
+          <Property Name="HKD" Type="Double" />
+          <Property Name="ISK" Type="Double" />
+          <Property Name="PHP" Type="Double" />
+          <Property Name="DKK" Type="Double" />
+          <Property Name="HUF" Type="Double" />
+          <Property Name="CZK" Type="Double" />
+          <Property Name="GBP" Type="Double" />
+          <Property Name="RON" Type="Double" />
+          <Property Name="SEK" Type="Double" />
+          <Property Name="IDR" Type="Double" />
+          <Property Name="INR" Type="Double" />
+          <Property Name="BRL" Type="Double" />
+          <Property Name="RUB" Type="Double" />
+          <Property Name="HRK" Type="Double" />
+          <Property Name="JPY" Type="Double" />
+          <Property Name="THB" Type="Double" />
+          <Property Name="CHF" Type="Double" />
+          <Property Name="EUR" Type="Double" />
+          <Property Name="MYR" Type="Double" />
+          <Property Name="BGN" Type="Double" />
+          <Property Name="TRY" Type="Double" />
+          <Property Name="CNY" Type="Double" />
+          <Property Name="NOK" Type="Double" />
+          <Property Name="NZD" Type="Double" />
+          <Property Name="ZAR" Type="Double" />
+          <Property Name="USD" Type="Double" />
+          <Property Name="MXN" Type="Double" />
+          <Property Name="SGD" Type="Double" />
+          <Property Name="AUD" Type="Double" />
+          <Property Name="ILS" Type="Double" />
+          <Property Name="KRW" Type="Double" />
+          <Property Name="PLN" Type="Double" />
+          <Property Name="INS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityContainer Name="dbtestEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CURENTCY_MASTER" EntityType="Self.CURENTCY_MASTER" />
+          <EntitySet Name="Employee_member" EntityType="Self.Employee_member" />
+          <EntitySet Name="EXCHANGERATES" EntityType="Self.EXCHANGERATES" />
+          <EntitySet Name="Seal_order" EntityType="Self.Seal_order" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TD_Tempolary_Factory" EntityType="Self.TD_Tempolary_Factory" />
+          <EntitySet Name="TM_Countrys" EntityType="Self.TM_Countrys" />
+          <EntitySet Name="TM_Factory" EntityType="Self.TM_Factory" />
+          <EntitySet Name="VW_EXCHENGERATES" EntityType="Self.VW_EXCHENGERATES" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbtestModelStoreContainer" CdmEntityContainer="dbtestEntities1">
+          <EntitySetMapping Name="CURENTCY_MASTER">
+            <EntityTypeMapping TypeName="dbtestModel.CURENTCY_MASTER">
+              <MappingFragment StoreEntitySet="CURENTCY_MASTER">
+                <ScalarProperty Name="EXC_ALIAS" ColumnName="EXC_ALIAS" />
+                <ScalarProperty Name="EXC_NUM" ColumnName="EXC_NUM" />
+                <ScalarProperty Name="EXC_NAME" ColumnName="EXC_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_member">
+            <EntityTypeMapping TypeName="dbtestModel.Employee_member">
+              <MappingFragment StoreEntitySet="Employee_member">
+                <ScalarProperty Name="Emp_inx" ColumnName="Emp_inx" />
+                <ScalarProperty Name="Emp_code" ColumnName="Emp_code" />
+                <ScalarProperty Name="Emp_efname" ColumnName="Emp_efname" />
+                <ScalarProperty Name="Emp_elname" ColumnName="Emp_elname" />
+                <ScalarProperty Name="Emp_tfname" ColumnName="Emp_tfname" />
+                <ScalarProperty Name="Emp_tlname" ColumnName="Emp_tlname" />
+                <ScalarProperty Name="Emp_position" ColumnName="Emp_position" />
+                <ScalarProperty Name="Emp_birth_date" ColumnName="Emp_birth_date" />
+                <ScalarProperty Name="Emp_start_date" ColumnName="Emp_start_date" />
+                <ScalarProperty Name="Emp_stop_date" ColumnName="Emp_stop_date" />
+                <ScalarProperty Name="Emp_updated_date" ColumnName="Emp_updated_date" />
+                <ScalarProperty Name="Emp_created_date" ColumnName="Emp_created_date" />
+                <ScalarProperty Name="Emp_created_by" ColumnName="Emp_created_by" />
+                <ScalarProperty Name="Emp_updated_by" ColumnName="Emp_updated_by" />
+                <ScalarProperty Name="Emp_status" ColumnName="Emp_status" />
+                <ScalarProperty Name="Emp_username" ColumnName="Emp_username" />
+                <ScalarProperty Name="Emp_password" ColumnName="Emp_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXCHANGERATES">
+            <EntityTypeMapping TypeName="dbtestModel.EXCHANGERATES">
+              <MappingFragment StoreEntitySet="EXCHANGERATES">
+                <ScalarProperty Name="INS" ColumnName="INS" />
+                <ScalarProperty Name="EXC_DATE" ColumnName="EXC_DATE" />
+                <ScalarProperty Name="CAD" ColumnName="CAD" />
+                <ScalarProperty Name="HKD" ColumnName="HKD" />
+                <ScalarProperty Name="ISK" ColumnName="ISK" />
+                <ScalarProperty Name="PHP" ColumnName="PHP" />
+                <ScalarProperty Name="DKK" ColumnName="DKK" />
+                <ScalarProperty Name="HUF" ColumnName="HUF" />
+                <ScalarProperty Name="CZK" ColumnName="CZK" />
+                <ScalarProperty Name="GBP" ColumnName="GBP" />
+                <ScalarProperty Name="RON" ColumnName="RON" />
+                <ScalarProperty Name="SEK" ColumnName="SEK" />
+                <ScalarProperty Name="IDR" ColumnName="IDR" />
+                <ScalarProperty Name="INR" ColumnName="INR" />
+                <ScalarProperty Name="BRL" ColumnName="BRL" />
+                <ScalarProperty Name="RUB" ColumnName="RUB" />
+                <ScalarProperty Name="HRK" ColumnName="HRK" />
+                <ScalarProperty Name="JPY" ColumnName="JPY" />
+                <ScalarProperty Name="THB" ColumnName="THB" />
+                <ScalarProperty Name="CHF" ColumnName="CHF" />
+                <ScalarProperty Name="EUR" ColumnName="EUR" />
+                <ScalarProperty Name="MYR" ColumnName="MYR" />
+                <ScalarProperty Name="BGN" ColumnName="BGN" />
+                <ScalarProperty Name="TRY" ColumnName="TRY" />
+                <ScalarProperty Name="CNY" ColumnName="CNY" />
+                <ScalarProperty Name="NOK" ColumnName="NOK" />
+                <ScalarProperty Name="NZD" ColumnName="NZD" />
+                <ScalarProperty Name="ZAR" ColumnName="ZAR" />
+                <ScalarProperty Name="USD" ColumnName="USD" />
+                <ScalarProperty Name="MXN" ColumnName="MXN" />
+                <ScalarProperty Name="SGD" ColumnName="SGD" />
+                <ScalarProperty Name="AUD" ColumnName="AUD" />
+                <ScalarProperty Name="ILS" ColumnName="ILS" />
+                <ScalarProperty Name="KRW" ColumnName="KRW" />
+                <ScalarProperty Name="PLN" ColumnName="PLN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seal_order">
+            <EntityTypeMapping TypeName="dbtestModel.Seal_order">
+              <MappingFragment StoreEntitySet="Seal_order">
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Item_Type" ColumnName="Item_Type" />
+                <ScalarProperty Name="Sales_Channel" ColumnName="Sales_Channel" />
+                <ScalarProperty Name="Order_Priority" ColumnName="Order_Priority" />
+                <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="Ship_Date" ColumnName="Ship_Date" />
+                <ScalarProperty Name="Units_Sold" ColumnName="Units_Sold" />
+                <ScalarProperty Name="Unit_Price" ColumnName="Unit_Price" />
+                <ScalarProperty Name="Unit_Cost" ColumnName="Unit_Cost" />
+                <ScalarProperty Name="Total_Revenue" ColumnName="Total_Revenue" />
+                <ScalarProperty Name="Total_Cost" ColumnName="Total_Cost" />
+                <ScalarProperty Name="Total_Profit" ColumnName="Total_Profit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbtestModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TD_Tempolary_Factory">
+            <EntityTypeMapping TypeName="dbtestModel.TD_Tempolary_Factory">
+              <MappingFragment StoreEntitySet="TD_Tempolary_Factory">
+                <ScalarProperty Name="temp_id" ColumnName="temp_id" />
+                <ScalarProperty Name="temp_code" ColumnName="temp_code" />
+                <ScalarProperty Name="temp_name" ColumnName="temp_name" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TM_Countrys">
+            <EntityTypeMapping TypeName="dbtestModel.TM_Countrys">
+              <MappingFragment StoreEntitySet="TM_Countrys">
+                <ScalarProperty Name="inx" ColumnName="inx" />
+                <ScalarProperty Name="nation_id" ColumnName="nation_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="nation_name_th" ColumnName="nation_name_th" />
+                <ScalarProperty Name="nation_name_en" ColumnName="nation_name_en" />
+                <ScalarProperty Name="country_name_th" ColumnName="country_name_th" />
+                <ScalarProperty Name="country_name_en" ColumnName="country_name_en" />
+                <ScalarProperty Name="area_one" ColumnName="area_one" />
+                <ScalarProperty Name="area_two" ColumnName="area_two" />
+                <ScalarProperty Name="area_percent" ColumnName="area_percent" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="color_tag" ColumnName="color_tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TM_Factory">
+            <EntityTypeMapping TypeName="dbtestModel.TM_Factory">
+              <MappingFragment StoreEntitySet="TM_Factory">
+                <ScalarProperty Name="fact_id" ColumnName="fact_id" />
+                <ScalarProperty Name="fact_name" ColumnName="fact_name" />
+                <ScalarProperty Name="fact_owner" ColumnName="fact_owner" />
+                <ScalarProperty Name="fact_use" ColumnName="fact_use" />
+                <ScalarProperty Name="addess" ColumnName="addess" />
+                <ScalarProperty Name="m" ColumnName="m" />
+                <ScalarProperty Name="s" ColumnName="s" />
+                <ScalarProperty Name="t" ColumnName="t" />
+                <ScalarProperty Name="b" ColumnName="b" />
+                <ScalarProperty Name="provinc" ColumnName="provinc" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="zib" ColumnName="zib" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="typ" ColumnName="typ" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="mand" ColumnName="mand" />
+                <ScalarProperty Name="power" ColumnName="power" />
+                <ScalarProperty Name="TSIC" ColumnName="TSIC" />
+                <ScalarProperty Name="old_num" ColumnName="old_num" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VW_EXCHENGERATES">
+            <EntityTypeMapping TypeName="dbtestModel.VW_EXCHENGERATES">
+              <MappingFragment StoreEntitySet="VW_EXCHENGERATES">
+                <ScalarProperty Name="EXCHENGE_DATE" ColumnName="EXCHENGE_DATE" />
+                <ScalarProperty Name="CAD" ColumnName="CAD" />
+                <ScalarProperty Name="HKD" ColumnName="HKD" />
+                <ScalarProperty Name="ISK" ColumnName="ISK" />
+                <ScalarProperty Name="PHP" ColumnName="PHP" />
+                <ScalarProperty Name="DKK" ColumnName="DKK" />
+                <ScalarProperty Name="HUF" ColumnName="HUF" />
+                <ScalarProperty Name="CZK" ColumnName="CZK" />
+                <ScalarProperty Name="GBP" ColumnName="GBP" />
+                <ScalarProperty Name="RON" ColumnName="RON" />
+                <ScalarProperty Name="SEK" ColumnName="SEK" />
+                <ScalarProperty Name="IDR" ColumnName="IDR" />
+                <ScalarProperty Name="INR" ColumnName="INR" />
+                <ScalarProperty Name="BRL" ColumnName="BRL" />
+                <ScalarProperty Name="RUB" ColumnName="RUB" />
+                <ScalarProperty Name="HRK" ColumnName="HRK" />
+                <ScalarProperty Name="JPY" ColumnName="JPY" />
+                <ScalarProperty Name="THB" ColumnName="THB" />
+                <ScalarProperty Name="CHF" ColumnName="CHF" />
+                <ScalarProperty Name="EUR" ColumnName="EUR" />
+                <ScalarProperty Name="MYR" ColumnName="MYR" />
+                <ScalarProperty Name="BGN" ColumnName="BGN" />
+                <ScalarProperty Name="TRY" ColumnName="TRY" />
+                <ScalarProperty Name="CNY" ColumnName="CNY" />
+                <ScalarProperty Name="NOK" ColumnName="NOK" />
+                <ScalarProperty Name="NZD" ColumnName="NZD" />
+                <ScalarProperty Name="ZAR" ColumnName="ZAR" />
+                <ScalarProperty Name="USD" ColumnName="USD" />
+                <ScalarProperty Name="MXN" ColumnName="MXN" />
+                <ScalarProperty Name="SGD" ColumnName="SGD" />
+                <ScalarProperty Name="AUD" ColumnName="AUD" />
+                <ScalarProperty Name="ILS" ColumnName="ILS" />
+                <ScalarProperty Name="KRW" ColumnName="KRW" />
+                <ScalarProperty Name="PLN" ColumnName="PLN" />
+                <ScalarProperty Name="INS" ColumnName="INS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

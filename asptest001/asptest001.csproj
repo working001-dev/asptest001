@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,10 @@
     <Reference Include="EasyEncryption, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EasyEncryption.1.0.2\lib\EasyEncryption.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.2.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\New_project\packages\EPPlus.5.2.1\lib\net45\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -81,21 +86,33 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.4-rc\lib\net45\Rotativa.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -136,6 +153,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -200,102 +218,98 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SessionAuthorizeAttribute.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Session_Login.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Categories.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
+    <Compile Include="Models\CURENTCY_MASTER.cs">
+      <DependentUpon>dbtest.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerDemographics.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Customers.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Db01.Context.cs">
+    <Compile Include="Models\dbtest.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Db01.Context.tt</DependentUpon>
+      <DependentUpon>dbtest.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Db01.cs">
+    <Compile Include="Models\dbtest.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Db01.tt</DependentUpon>
+      <DependentUpon>dbtest.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Db01.Designer.cs">
+    <Compile Include="Models\dbtest.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Db01.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Employees.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
+      <DependentUpon>dbtest.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee_member.cs">
-      <DependentUpon>Model_Emp_member.tt</DependentUpon>
+      <DependentUpon>dbtest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EXCHANGERATES.cs">
+      <DependentUpon>dbtest.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Model_Emp_member.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model_Emp_member.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model_Emp_member.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model_Emp_member.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model_Emp_member.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model_Emp_member.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Orders.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Order_Details.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Products.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Region.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Seal_order.cs">
-      <DependentUpon>Model_Emp_member.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Shippers.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Suppliers.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
+      <DependentUpon>dbtest.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
+      <DependentUpon>dbtest.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TD_Tempolary_Factory.cs">
-      <DependentUpon>Model_Emp_member.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Territories.cs">
-      <DependentUpon>Db01.tt</DependentUpon>
+      <DependentUpon>dbtest.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TM_Countrys.cs">
-      <DependentUpon>Model_Emp_member.tt</DependentUpon>
+      <DependentUpon>dbtest.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TM_Factory.cs">
-      <DependentUpon>Model_Emp_member.tt</DependentUpon>
+      <DependentUpon>dbtest.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VW_EXCHENGERATES.cs">
+      <DependentUpon>dbtest.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\AdventureCycles-Logo.png" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\dataTables.bootstrap.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\dataTables.bootstrap.min.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\dataTables.bootstrap4.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\dataTables.foundation.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\dataTables.foundation.min.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\dataTables.jqueryui.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\dataTables.jqueryui.min.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\dataTables.semanticui.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\dataTables.semanticui.min.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\jquery.dataTables.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\css\jquery.dataTables.min.css" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\images\sort_asc.png" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\images\sort_asc_disabled.png" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\images\sort_both.png" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\images\sort_desc.png" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\images\sort_desc_disabled.png" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\dataTables.bootstrap.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\dataTables.bootstrap.min.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\dataTables.bootstrap4.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\dataTables.foundation.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\dataTables.foundation.min.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\dataTables.jqueryui.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\dataTables.jqueryui.min.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\dataTables.semanticui.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\dataTables.semanticui.min.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\jquery.dataTables.js" />
+    <Content Include="Assets\DataTables\DataTables-1.10.21\js\jquery.dataTables.min.js" />
+    <Content Include="Assets\DataTables\datatables.css" />
+    <Content Include="Assets\DataTables\datatables.js" />
+    <Content Include="Assets\DataTables\datatables.min.css" />
+    <Content Include="Assets\DataTables\datatables.min.js" />
     <Content Include="Content\bootstrap-notify.css" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
@@ -470,50 +484,37 @@
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\styles\alert-bangtidy.css" />
     <Content Include="Content\styles\alert-blackgloss.css" />
+    <Content Include="Content\Sweetalert2\sweetalert2.all.js" />
+    <Content Include="Content\Sweetalert2\sweetalert2.all.min.js" />
+    <Content Include="Content\Sweetalert2\sweetalert2.css" />
+    <Content Include="Content\Sweetalert2\sweetalert2.js" />
+    <Content Include="Content\Sweetalert2\sweetalert2.min.css" />
+    <Content Include="Content\Sweetalert2\sweetalert2.min.js" />
+    <Content Include="Content\wizard\Site_wizard.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Db01.Context.tt">
+    <Content Include="Models\dbtest.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Db01.edmx</DependentUpon>
-      <LastGenOutput>Db01.Context.cs</LastGenOutput>
+      <DependentUpon>dbtest.edmx</DependentUpon>
+      <LastGenOutput>dbtest.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Db01.tt">
+    <Content Include="Models\dbtest.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Db01.edmx</DependentUpon>
-      <LastGenOutput>Db01.cs</LastGenOutput>
+      <DependentUpon>dbtest.edmx</DependentUpon>
+      <LastGenOutput>dbtest.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model_Emp_member.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model_Emp_member.edmx</DependentUpon>
-      <LastGenOutput>Model_Emp_member.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Model_Emp_member.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model_Emp_member.edmx</DependentUpon>
-      <LastGenOutput>Model_Emp_member.cs</LastGenOutput>
-    </Content>
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap-notify.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\Db01.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Db01.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Db01.edmx.diagram">
-      <DependentUpon>Db01.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\Model_Emp_member.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model_Emp_member.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model_Emp_member.edmx.diagram">
-      <DependentUpon>Model_Emp_member.edmx</DependentUpon>
     </Content>
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
@@ -528,7 +529,16 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="App_Browsers\qt.browser">
+      <SubType>Designer</SubType>
+    </Content>
+    <EntityDeploy Include="Models\dbtest.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>dbtest.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\dbtest.edmx.diagram">
+      <DependentUpon>dbtest.edmx</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap.validate.js" />
@@ -669,8 +679,13 @@
     <Content Include="Scripts\i18n\vi.js" />
     <Content Include="Scripts\i18n\zh-CN.js" />
     <Content Include="Scripts\i18n\zh-TW.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.5.1.js" />
+    <Content Include="Scripts\jquery-3.5.1.min.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.5.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.md5.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -683,6 +698,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\wizard\site_wizard.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -719,18 +735,20 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\Partial\_Header.cshtml" />
-    <Content Include="Views\Home\QueryData.cshtml" />
+    <Content Include="Views\Home\MainHome.cshtml" />
     <Content Include="Views\Home\Get_table.cshtml" />
+    <Content Include="Views\Home\GetSamples.cshtml" />
+    <Content Include="Views\Shared\Issue\_Sharing.cshtml" />
+    <Content Include="Views\Home\Issue.cshtml" />
+    <Content Include="Views\Shared\Modal\_Modal_Factory_Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="UploadedFiles\" />
     <Folder Include="Views\Customers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

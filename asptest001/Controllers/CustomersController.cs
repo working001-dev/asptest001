@@ -11,7 +11,7 @@ namespace asptest001.Controllers
     public class CustomersController : Controller
     {
         // GET: Customers
-        dbtestEntities dbt = new dbtestEntities();
+        dbtestEntities1 dbt = new dbtestEntities1();
         TM_Factory fact = new TM_Factory();
         public ActionResult Index()
         {

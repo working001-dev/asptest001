@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "GetSamples";
+    Layout  = null;
+}
+<html>
+  <head>
+      <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+      <style>
+
+          *{
+              padding:0;
+              margin:0;
+          }
+          html{
+              width:100%;
+              height:100%;
+              font-family: 'Open Sans', sans-serif;
+          }
+          .border-out{
+              width:100%;
+              height:100%;
+              padding:5px; 
+              border:2px solid black;
+              display:block;
+              position:relative;
+              font-family: 'Open Sans', sans-serif;
+          }
+          .header-form{
+              
+              padding:2px;
+              color:white;
+              width:50%;
+              float:left;
+              font-family: 'Open Sans', sans-serif;
+          }
+          .content-header{
+            display:block;
+            background:rgb(82, 86, 89);
+            padding:7px;
+            height:32px;
+            font-size: 14px;
+            width:100%;
+          }
+          .body-cont{
+              width:100%;
+              border:1px solid rgb(82, 86, 89);
+              display:block;
+              position:relative;
+              float:left;
+              padding:1px;
+          }
+          .ct{
+              float:left;
+          }
+          .ct-row{
+              display: block;
+              position:relative;
+              float:left;
+              margin-bottom:5px;
+          }
+          .content-lable{
+            display: block;
+            color: black;
+            background: rgb(198, 200, 203);
+            padding: 5px;
+            height: 24px;
+            font-size: 11px;
+            width: 94px;
+            margin-right: 2px;
+          }
+          .content-result{
+            display: block;
+            color: black;
+            background: rgb(237, 240, 245);
+            padding: 5px;
+            height: 24px;
+            font-size: 11px;
+            width: 194px;
+            margin-right: 2px;
+          }
+      </style>
+ </head>
+    <body>
+        <div class="border-out">
+            <div class="header-form">
+                <span class="content-header">01. Item in formation</span>
+                <div class="body-cont">
+                    <div class="ct-row">
+                        <span class="ct content-lable">Item Code </span>
+                        <span class="ct content-result">XBD0004982-MDC</span>
+                        <span class="ct content-lable">Item Name </span>
+                        <span class="ct content-result">FONT CASE, HONDA</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-form">
+                <span class="content-header">02. Item in Options</span>
+            </div>
+        </div>
+    </body>
+</html>
+
+

@@ -1,27 +1,23 @@
-﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+﻿
+@if (Session["InsuredKey"] != null && Session["InsuredKey"].ToString() == "1")
 {
-    
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+    using (Html.BeginForm("Logout", "Home", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right", /*, onSubmit = "submit_form(event)"*/ }))
+    {
+        <ul id="member-login" class="nav navbar-nav navbar-right nav-login">
+            <li><span class="head-login">@Session["MemberName"]<button type='submit' class='btn-logout'><span class="glyphicon glyphicon-log-out"></span></button></span></li>
+            @*<li></li>*@
+        </ul> 
     }
 }
 else
 {
-    using (Html.BeginForm("QueryData", "Home", FormMethod.Post, new { id = "loginForm", @class = "navbar-right" , onSubmit = "submit_form(event)" }))
+    using (Html.BeginForm("Login", "Home", FormMethod.Post, new { id = "loginForm", @class = "navbar-right",  }))
     {
         <ul id="member-login" class="nav navbar-nav navbar-right nav-login">
             <li><input class="form-control" name="uid" type="text" placeholder="Username" /></li>
             <li><input class="form-control" name="pass" type="password" placeholder="Password" /></li> 
-            <li><button class="btn">login</button></li>
+            <li><button class="btn" type="button" onclick = "submit_form(this)" >login</button></li>
         </ul>
     }
 }

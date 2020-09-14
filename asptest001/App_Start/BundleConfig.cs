@@ -10,9 +10,9 @@ namespace asptest001
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery.md5.js",
-                        "~/Scripts/DataTables/jquery.dataTables.min.js",
-                        "~/Scripts/DataTables/dataTables.bootstrap.min.js"));
+                        "~/Scripts/jquery.md5.js"
+                        //"~/Scripts/DataTables/jquery.dataTables.min.js",
+                        /*"~/Scripts/DataTables/dataTables.bootstrap.min.js"*/));
             bundles.Add(new ScriptBundle("~/bundles/app").Include("~/Scripts/Login/sitelogin.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -32,7 +32,7 @@ namespace asptest001
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/DataTables/css/dataTables.bootstrap.min.css",
+                      //"~/Content/DataTables/css/dataTables.bootstrap.min.css",
                       "~/Content/site.css"));
         }
     }

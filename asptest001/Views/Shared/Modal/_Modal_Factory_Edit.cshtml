@@ -1,0 +1,120 @@
+﻿
+@{
+//ViewBag.Title = "_Modal_Factory_Edit";
+}
+<style>
+    input{
+        max-width:100%;
+    }
+    .label{
+        color:black;
+    }
+    .address-fac{
+        border: 2px solid #428bca;
+        padding-bottom: 10px;
+        padding-top: 15px;
+        border-radius: 0px 4px 4px 4px;
+        margin-bottom: 40px;
+        position: relative;
+    }
+    .address-fac span{
+        position: absolute;
+        top: -27px;
+        left: -2px;
+        border: 2px solid #428bca;
+        font-size: 12px;
+        color: white;
+        background: #428bca;
+        padding: 3px 6px;
+        border-radius: 4px 4px 0px 0px;
+    }
+</style>
+<!-- Modal -->
+
+    <div class="modal fade" id="FacEdit" tabindex="-1" role="dialog" aria-labelledby="FacEditLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="width: 900px !important;">
+            <div class="modal-content">
+                
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <div class="modal-body" style="padding-top: 40px;">
+                    <form class="modal-edit">
+                        <div class="form-group">
+                            <div class="row address-fac">
+                                <span>ข้อมูลโรงงาน</span>
+                                <div class="col-lg-12">
+                                    <label class="label" for="fact_code">รหัสโรงงาน</label>
+                                    <input type="text" class="form-control" name="fact_code" id="fact_code" readonly />
+                                </div>
+                                <div class="col-lg-12">
+                                    <label class="label" for="fact_name">ชื่อโรงงาน</label>
+                                    <input type="text" class="form-control" name="fact_name" id="fact_name" />
+                                </div>
+                                <div class="col-lg-12">
+                                    <label class="label" for="fact_used">ประกอบการ</label>
+                                    <input type="text" class="form-control" name="fact_used" id="fact_used" />
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="label" for="fact_powe">Power</label>
+                                    <input type="text" class="form-control" name="fact_powe" id="fact_powe" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="label" for="fact_mand">พนักงาน</label>
+                                    <input type="text" class="form-control" name="fact_mand" id="fact_mand" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="label" for="fact_mony">เงินทุน</label>
+                                    <input type="text" class="form-control" name="fact_mony" id="fact_mony" />
+                                </div>
+                            </div>
+
+                            <div class="row address-fac">
+                                <span>ที่อยู่โรงงาน</span>
+                                <div class="col-lg-2">
+                                    <label class="label" for="fact_adds">ที่อยู่</label>
+                                    <input type="text" class="form-control" name="fact_adds" id="fact_adds" />
+                                </div>
+                                <div class="col-lg-1">
+                                    <label class="label" for="fact_m">หมู่</label>
+                                    <input type="text" class="form-control" name="fact_m" id="fact_m" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="label" for="fact_t">ถนน</label>
+                                    <input type="text" class="form-control" name="fact_t" id="fact_t" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="label" for="fact_s">ซอย</label>
+                                    <input type="text" class="form-control" name="fact_s" id="fact_s" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="label" for="fact_b">ตำบล</label>
+                                    <input type="text" class="form-control" name="fact_b" id="fact_b" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="label" for="fact_povc">อำเภอ</label>
+                                    <input type="text" class="form-control" name="fact_povc" id="fact_povc" />
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="label" for="fact_city">จังหวัด</label>
+                                    <input type="text" class="form-control" name="fact_city" id="fact_city" />
+                                </div>
+                                <div class="col-lg-6">
+                                    <label class="label" for="fact_phon">โทร</label>
+                                    <input type="text" class="form-control" name="fact_phon" id="fact_phon" />
+                                </div>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary save-modal">Save changes</button>
+                    </div>
+            </div>
+        </div>
+    </div>

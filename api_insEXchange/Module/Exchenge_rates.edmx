@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbtestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CURENTCY_MASTER">
+          <Key>
+            <PropertyRef Name="EXC_ALIAS" />
+          </Key>
+          <Property Name="EXC_ALIAS" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="EXC_NUM" Type="float" />
+          <Property Name="EXC_NAME" Type="nchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="EXCHANGERATES">
+          <Key>
+            <PropertyRef Name="INS" />
+          </Key>
+          <Property Name="INS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EXC_DATE" Type="datetime" />
+          <Property Name="CAD" Type="float" />
+          <Property Name="HKD" Type="float" />
+          <Property Name="ISK" Type="float" />
+          <Property Name="PHP" Type="float" />
+          <Property Name="DKK" Type="float" />
+          <Property Name="HUF" Type="float" />
+          <Property Name="CZK" Type="float" />
+          <Property Name="GBP" Type="float" />
+          <Property Name="RON" Type="float" />
+          <Property Name="SEK" Type="float" />
+          <Property Name="IDR" Type="float" />
+          <Property Name="INR" Type="float" />
+          <Property Name="BRL" Type="float" />
+          <Property Name="RUB" Type="float" />
+          <Property Name="HRK" Type="float" />
+          <Property Name="JPY" Type="float" />
+          <Property Name="THB" Type="float" />
+          <Property Name="CHF" Type="float" />
+          <Property Name="EUR" Type="float" />
+          <Property Name="MYR" Type="float" />
+          <Property Name="BGN" Type="float" />
+          <Property Name="TRY" Type="float" />
+          <Property Name="CNY" Type="float" />
+          <Property Name="NOK" Type="float" />
+          <Property Name="NZD" Type="float" />
+          <Property Name="ZAR" Type="float" />
+          <Property Name="USD" Type="float" />
+          <Property Name="MXN" Type="float" />
+          <Property Name="SGD" Type="float" />
+          <Property Name="AUD" Type="float" />
+          <Property Name="ILS" Type="float" />
+          <Property Name="KRW" Type="float" />
+          <Property Name="PLN" Type="float" />
+        </EntityType>
+        <EntityContainer Name="dbtestModelStoreContainer">
+          <EntitySet Name="CURENTCY_MASTER" EntityType="Self.CURENTCY_MASTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EXCHANGERATES" EntityType="Self.EXCHANGERATES" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbtestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CURENTCY_MASTER">
+          <Key>
+            <PropertyRef Name="EXC_ALIAS" />
+          </Key>
+          <Property Name="EXC_ALIAS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="EXC_NUM" Type="Double" />
+          <Property Name="EXC_NAME" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="dbtestEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CURENTCY_MASTER" EntityType="Self.CURENTCY_MASTER" />
+          <EntitySet Name="EXCHANGERATES" EntityType="dbtestModel.EXCHANGERATES" />
+        </EntityContainer>
+        <EntityType Name="EXCHANGERATES">
+          <Key>
+            <PropertyRef Name="INS" />
+          </Key>
+          <Property Name="INS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EXC_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CAD" Type="Double" />
+          <Property Name="HKD" Type="Double" />
+          <Property Name="ISK" Type="Double" />
+          <Property Name="PHP" Type="Double" />
+          <Property Name="DKK" Type="Double" />
+          <Property Name="HUF" Type="Double" />
+          <Property Name="CZK" Type="Double" />
+          <Property Name="GBP" Type="Double" />
+          <Property Name="RON" Type="Double" />
+          <Property Name="SEK" Type="Double" />
+          <Property Name="IDR" Type="Double" />
+          <Property Name="INR" Type="Double" />
+          <Property Name="BRL" Type="Double" />
+          <Property Name="RUB" Type="Double" />
+          <Property Name="HRK" Type="Double" />
+          <Property Name="JPY" Type="Double" />
+          <Property Name="THB" Type="Double" />
+          <Property Name="CHF" Type="Double" />
+          <Property Name="EUR" Type="Double" />
+          <Property Name="MYR" Type="Double" />
+          <Property Name="BGN" Type="Double" />
+          <Property Name="TRY" Type="Double" />
+          <Property Name="CNY" Type="Double" />
+          <Property Name="NOK" Type="Double" />
+          <Property Name="NZD" Type="Double" />
+          <Property Name="ZAR" Type="Double" />
+          <Property Name="USD" Type="Double" />
+          <Property Name="MXN" Type="Double" />
+          <Property Name="SGD" Type="Double" />
+          <Property Name="AUD" Type="Double" />
+          <Property Name="ILS" Type="Double" />
+          <Property Name="KRW" Type="Double" />
+          <Property Name="PLN" Type="Double" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbtestModelStoreContainer" CdmEntityContainer="dbtestEntities">
+          <EntitySetMapping Name="CURENTCY_MASTER">
+            <EntityTypeMapping TypeName="dbtestModel.CURENTCY_MASTER">
+              <MappingFragment StoreEntitySet="CURENTCY_MASTER">
+                <ScalarProperty Name="EXC_ALIAS" ColumnName="EXC_ALIAS" />
+                <ScalarProperty Name="EXC_NUM" ColumnName="EXC_NUM" />
+                <ScalarProperty Name="EXC_NAME" ColumnName="EXC_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXCHANGERATES">
+            <EntityTypeMapping TypeName="dbtestModel.EXCHANGERATES">
+              <MappingFragment StoreEntitySet="EXCHANGERATES">
+                <ScalarProperty Name="PLN" ColumnName="PLN" />
+                <ScalarProperty Name="KRW" ColumnName="KRW" />
+                <ScalarProperty Name="ILS" ColumnName="ILS" />
+                <ScalarProperty Name="AUD" ColumnName="AUD" />
+                <ScalarProperty Name="SGD" ColumnName="SGD" />
+                <ScalarProperty Name="MXN" ColumnName="MXN" />
+                <ScalarProperty Name="USD" ColumnName="USD" />
+                <ScalarProperty Name="ZAR" ColumnName="ZAR" />
+                <ScalarProperty Name="NZD" ColumnName="NZD" />
+                <ScalarProperty Name="NOK" ColumnName="NOK" />
+                <ScalarProperty Name="CNY" ColumnName="CNY" />
+                <ScalarProperty Name="TRY" ColumnName="TRY" />
+                <ScalarProperty Name="BGN" ColumnName="BGN" />
+                <ScalarProperty Name="MYR" ColumnName="MYR" />
+                <ScalarProperty Name="EUR" ColumnName="EUR" />
+                <ScalarProperty Name="CHF" ColumnName="CHF" />
+                <ScalarProperty Name="THB" ColumnName="THB" />
+                <ScalarProperty Name="JPY" ColumnName="JPY" />
+                <ScalarProperty Name="HRK" ColumnName="HRK" />
+                <ScalarProperty Name="RUB" ColumnName="RUB" />
+                <ScalarProperty Name="BRL" ColumnName="BRL" />
+                <ScalarProperty Name="INR" ColumnName="INR" />
+                <ScalarProperty Name="IDR" ColumnName="IDR" />
+                <ScalarProperty Name="SEK" ColumnName="SEK" />
+                <ScalarProperty Name="RON" ColumnName="RON" />
+                <ScalarProperty Name="GBP" ColumnName="GBP" />
+                <ScalarProperty Name="CZK" ColumnName="CZK" />
+                <ScalarProperty Name="HUF" ColumnName="HUF" />
+                <ScalarProperty Name="DKK" ColumnName="DKK" />
+                <ScalarProperty Name="PHP" ColumnName="PHP" />
+                <ScalarProperty Name="ISK" ColumnName="ISK" />
+                <ScalarProperty Name="HKD" ColumnName="HKD" />
+                <ScalarProperty Name="CAD" ColumnName="CAD" />
+                <ScalarProperty Name="EXC_DATE" ColumnName="EXC_DATE" />
+                <ScalarProperty Name="INS" ColumnName="INS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

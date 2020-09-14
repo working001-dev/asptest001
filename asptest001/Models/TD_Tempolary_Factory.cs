@@ -15,8 +15,8 @@ namespace asptest001.Models
     public partial class TD_Tempolary_Factory
     {
         public int temp_id { get; set; }
+        public string temp_code { get; set; }
         public string temp_name { get; set; }
         public Nullable<System.DateTime> created_date { get; set; }
-        public string temp_code { get; set; }
     }
 }

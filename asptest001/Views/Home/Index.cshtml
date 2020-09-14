@@ -1,6 +1,11 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@section scripts{
+<script type="text/javascript">
+    if (!!window.performance && window.performance.navigation.type === 2) window.location.reload();
+</script>
+}
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
